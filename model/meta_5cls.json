@@ -1,0 +1,15 @@
+{
+  "classes": [
+    "burping",
+    "hungry",
+    "no_cry",
+    "pain",
+    "tired"
+  ],
+  "feature_mean": -47.93042755126953,
+  "feature_std": 21.425565719604492,
+  "test_acc": 0.8958990536277602,
+  "test_loss": 0.31144562796087294,
+  "num_classes": 5,
+  "n_params": 156645
+}

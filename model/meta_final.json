@@ -1,0 +1,13 @@
+{
+  "classes": [
+    "hungry",
+    "no_cry",
+    "other_cry"
+  ],
+  "feature_mean": -49.765892028808594,
+  "feature_std": 22.008926391601562,
+  "test_acc": 0.9695431472081218,
+  "test_loss": 0.111502975849482,
+  "num_classes": 3,
+  "n_params": 156387
+}

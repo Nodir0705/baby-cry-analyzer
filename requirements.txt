@@ -1,0 +1,7 @@
+numpy
+librosa
+sounddevice
+pyaudio
+requests
+python-telegram-bot
+soundfile

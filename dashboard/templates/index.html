@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Cry Analyzer — Dashboard</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;
+            --accent:#6c5ce7;--accent2:#00cec9;--accent3:#fd79a8;--accent4:#fdcb6e;
+            --text:#dfe6e9;--text2:#b2bec3;--success:#00b894;--danger:#d63031;
+            --nav-h:56px;--header-h:72px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{height:100%;overflow:hidden}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+
+        .header{background:linear-gradient(135deg,#6c5ce7,#a29bfe);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;height:var(--header-h)}
+        .header h1{font-size:1.3rem;font-weight:700}
+        .header .subtitle{font-size:0.8rem;opacity:0.85;margin-top:2px}
+        .header .status-badge{background:rgba(255,255,255,0.2);padding:5px 14px;border-radius:20px;font-size:0.75rem;display:flex;align-items:center;gap:8px}
+        .status-dot{width:8px;height:8px;border-radius:50%;background:#55efc4;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+        .page-wrapper{flex:1;overflow-y:auto;overflow-x:hidden;padding:16px;-webkit-overflow-scrolling:touch}
+        .page{display:none}.page.active{display:block}
+
+        .bottom-nav{flex-shrink:0;height:var(--nav-h);background:var(--card);border-top:1px solid var(--border);display:flex;justify-content:space-around;align-items:center;padding-bottom:env(safe-area-inset-bottom,0)}
+        .nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:6px 12px;border-radius:10px;transition:all 0.2s;color:var(--text2);font-size:0.65rem;letter-spacing:0.5px;text-transform:uppercase;-webkit-tap-highlight-color:transparent}
+        .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+        .nav-item.active{color:var(--accent)}.nav-item.active svg{stroke:var(--accent)}
+
+        .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:16px}
+        .card h3{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:12px}
+
+        .stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+        .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+        .stat-card .value{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .stat-card .label{color:var(--text2);font-size:0.8rem;margin-top:2px}
+        .stat-card.danger .value{background:linear-gradient(135deg,var(--danger),var(--accent3));-webkit-background-clip:text}
+
+        .chart-container{position:relative;height:260px}
+
+        /* Last Detection Card */
+        .ld-card{background:linear-gradient(135deg,rgba(108,92,231,0.12),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.3);border-radius:14px;padding:20px;margin-bottom:16px}
+        .ld-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+        .ld-icon{font-size:2.6rem}
+        .ld-info{flex:1}
+        .ld-type{font-size:1.2rem;font-weight:700;text-transform:capitalize}
+        .ld-time{font-size:0.8rem;color:var(--text2);margin-top:2px}
+        .ld-bars{display:flex;flex-direction:column;gap:10px}
+        .ld-bar-row{display:flex;align-items:center;gap:10px}
+        .ld-bar-label{width:90px;font-size:0.8rem;color:var(--text2);text-transform:capitalize;display:flex;align-items:center;gap:6px}
+        .ld-bar-track{flex:1;height:28px;background:rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;position:relative}
+        .ld-bar-fill{height:100%;border-radius:8px;transition:width 0.8s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:0.8rem;font-weight:700;min-width:40px}
+        .ld-bar-winner{box-shadow:0 0 12px rgba(108,92,231,0.4)}
+        .ld-bar-pct{width:50px;text-align:right;font-size:0.9rem;font-weight:700}
+
+        .events-table{width:100%;border-collapse:collapse}
+        .events-table th{text-align:left;padding:10px 10px;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--text2);border-bottom:1px solid var(--border)}
+        .events-table td{padding:10px 10px;border-bottom:1px solid var(--border);font-size:0.85rem}
+        .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.7rem;font-weight:600}
+        .badge-hungry{background:rgba(253,203,110,0.15);color:#fdcb6e}.badge-scared{background:rgba(108,92,231,0.15);color:#a29bfe}
+        .badge-discomfort{background:rgba(253,121,168,0.15);color:#fd79a8}.badge-belly_pain{background:rgba(214,48,49,0.15);color:#ff7675}
+        .badge-test{background:rgba(0,206,201,0.15);color:#00cec9}.badge-synced{background:rgba(0,184,148,0.15);color:#00b894}
+        .badge-pending{background:rgba(253,203,110,0.15);color:#fdcb6e}
+
+        .filter-row{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+        .filter-btn{padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.75rem;transition:all 0.2s}
+        .filter-btn.active,.filter-btn:hover{background:var(--accent);color:white;border-color:var(--accent)}
+        .pagination{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+        .pagination span{font-size:0.8rem;color:var(--text2)}
+
+        .model-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+        .model-item .key{color:var(--text2)}.model-item .val{font-weight:600}
+        .accuracy-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+        .accuracy-fill{height:100%;border-radius:4px;transition:width 1s ease}
+
+        .btn{padding:12px 20px;border:none;border-radius:10px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;width:100%}
+        .btn:active{transform:scale(0.97)}
+        .btn-primary{background:var(--accent);color:white}.btn-success{background:var(--success);color:white}
+        .btn-danger{background:var(--danger);color:white}.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+        .btn-group{display:flex;flex-direction:column;gap:10px}
+        .sim-result{margin-top:12px;padding:12px;background:rgba(108,92,231,0.1);border-radius:8px;font-size:0.85rem;display:none}
+        .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--card);border:1px solid var(--border);padding:12px 24px;border-radius:10px;font-size:0.85rem;opacity:0;transition:all 0.3s;z-index:1000;white-space:nowrap}
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+        @media(min-width:600px){.stat-row{grid-template-columns:repeat(4,1fr)}}
+    
+        .model-toggle{display:flex;gap:4px;background:rgba(0,0,0,0.25);padding:3px;border-radius:20px;margin-right:10px}
+        .model-toggle button{background:transparent;border:none;color:#fff;font:600 0.72rem 'Segoe UI',sans-serif;padding:5px 12px;border-radius:16px;cursor:pointer;opacity:0.6;transition:all 0.2s}
+        .model-toggle button.active{background:rgba(255,255,255,0.9);color:#6c5ce7;opacity:1}
+        .model-toggle button:hover:not(.active){opacity:0.9}
+    
+        .cls-badges{display:flex;flex-wrap:wrap;gap:6px}
+        .cls-badge{display:inline-block;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;letter-spacing:0.3px}
+        .cls-badge-hungry{background:rgba(253,121,168,0.15);color:#fd79a8;border:1px solid rgba(253,121,168,0.3)}
+        .cls-badge-no_cry{background:rgba(85,239,196,0.15);color:#55efc4;border:1px solid rgba(85,239,196,0.3)}
+        .cls-badge-other_cry{background:rgba(108,92,231,0.15);color:#a29bfe;border:1px solid rgba(108,92,231,0.3)}
+        .cls-badge-pain{background:rgba(214,48,49,0.15);color:#ff7675;border:1px solid rgba(214,48,49,0.3)}
+        .cls-badge-tired{background:rgba(253,203,110,0.15);color:#fdcb6e;border:1px solid rgba(253,203,110,0.3)}
+        .cls-badge-burping{background:rgba(0,206,201,0.15);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div><h1>Baby Cry Analyzer</h1><div class="subtitle">AI-Powered Detection & Soothing</div></div>
+    <div class="status-badge"><div class="status-dot"></div><span>Online</span></div>
+</div>
+
+<div class="page-wrapper">
+
+    <!-- ═══ PAGE: Overview ═══ -->
+    <div class="page active" id="page-overview">
+        <!-- Last Detection with class breakdown -->
+        <div class="ld-card" id="lastDetectionCard" style="display:none;">
+            <div class="ld-header">
+                <div class="ld-icon" id="ldIcon"></div>
+                <div class="ld-info">
+                    <div class="ld-type" id="ldType">—</div>
+                    <div class="ld-time" id="ldTime">—</div>
+                </div>
+            </div>
+            <div class="ld-bars" id="ldBars"></div>
+        </div>
+
+        <div class="stat-row">
+            <div class="stat-card"><div class="value" id="totalEvents">—</div><div class="label">Total</div></div>
+            <div class="stat-card"><div class="value" id="todayEvents">—</div><div class="label">Today</div></div>
+            <div class="stat-card"><div class="value" id="syncedEvents">—</div><div class="label">Synced</div></div>
+            <div class="stat-card danger"><div class="value" id="unsyncedEvents">—</div><div class="label">Pending</div></div>
+        </div>
+
+        <div class="card">
+            <h3>Cry Type Distribution</h3>
+            <div class="chart-container"><canvas id="distributionChart"></canvas></div>
+        </div>
+        <div class="card">
+            <h3>Hourly Activity (Last 24h)</h3>
+            <div class="chart-container"><canvas id="hourlyChart"></canvas></div>
+        </div>
+    </div>
+
+    <!-- ═══ PAGE: Analytics ═══ -->
+    <div class="page" id="page-analytics">
+        <div class="card"><h3>Daily Trend (Last 30 Days)</h3><div class="chart-container"><canvas id="dailyChart"></canvas></div></div>
+        <div class="card"><h3>Daily Breakdown by Type (7 Days)</h3><div class="chart-container"><canvas id="dailyTypeChart"></canvas></div></div>
+    </div>
+
+    <!-- ═══ PAGE: Events ═══ -->
+    <div class="page" id="page-events">
+        <div class="card">
+            <h3>Event Log</h3>
+            <div class="filter-row">
+                <button class="filter-btn active" onclick="filterEvents(null,this)">All</button>
+                <button class="filter-btn" onclick="filterEvents('hungry',this)">Hungry</button>
+                <button class="filter-btn" onclick="filterEvents('scared',this)">Scared</button>
+                <button class="filter-btn" onclick="filterEvents('discomfort',this)">Discomfort</button>
+                <button class="filter-btn" onclick="filterEvents('belly_pain',this)">Belly Pain</button>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="events-table">
+                    <thead><tr><th>ID</th><th>Time</th><th>Type</th><th>Conf.</th><th>Sync</th></tr></thead>
+                    <tbody id="eventsBody"><tr><td colspan="5" style="text-align:center;color:var(--text2);">Loading...</td></tr></tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <span id="eventsPagination"></span>
+                <div style="display:flex;gap:8px;">
+                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="prevBtn" onclick="changePage(-1)" disabled>Prev</button>
+                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="nextBtn" onclick="changePage(1)">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ PAGE: System ═══ -->
+    <div class="page" id="page-system">
+        <div class="card">
+            <h3>Model Performance</h3>
+            <div id="modelInfo"></div>
+            <div style="margin-top:14px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Test Accuracy</span><span id="trainAcc">—</span></div>
+                <div class="accuracy-bar"><div class="accuracy-fill" id="trainAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
+            </div>
+            <div style="margin-top:10px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Avg Inference</span><span id="valAcc">—</span></div>
+                <div class="accuracy-bar"><div class="accuracy-fill" id="valAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent3),var(--accent4));"></div></div>
+            </div>
+        </div>
+        <div class="card" id="modelSwitchCard">
+            <h3>Active Model</h3>
+            <div class="model-toggle" id="modelToggle">
+                <button data-m="3cls">3-class</button>
+                <button data-m="5cls">5-class</button>
+            </div>
+            <div class="model-toggle-sub" id="modelToggleSub">hungry / no_cry / other_cry</div>
+        </div>
+        <div class="card">
+            <h3>Speaker</h3>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+                <span style="font-size:0.8rem;color:var(--text2);width:50px">Volume</span>
+                <input type="range" id="volSlider" min="0" max="100" value="100" style="flex:1;accent-color:var(--accent)">
+                <span id="volLabel" style="font-size:0.8rem;width:35px;text-align:right">100%</span>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="lullabyPlay()">Play Lullaby</button>
+                <button class="btn btn-danger" onclick="lullabyStop()">Stop Lullaby</button>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Controls</h3>
+            <div class="btn-group">
+                <button class="btn btn-success" onclick="testTelegram()">Test Telegram</button>
+                <button class="btn btn-danger" onclick="runSimulation()">Run Simulation</button>
+                <button class="btn btn-outline" onclick="refreshAll()">Refresh Data</button>
+            </div>
+            <div class="sim-result" id="simResult"></div>
+        </div>
+        <div class="card"><h3>System Config</h3><div id="settingsInfo" style="font-size:0.85rem;color:var(--text2);"></div></div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-item active" onclick="switchPage('overview',this)">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Overview</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('analytics',this)">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Analytics</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('events',this)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Events</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('system',this)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>System</span>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const COLORS={hungry:'#fdcb6e',scared:'#a29bfe',discomfort:'#fd79a8',belly_pain:'#ff7675',test:'#00cec9'};
+const CRY_EMOJI={hungry:'🍼',scared:'😨',discomfort:'😣',belly_pain:'🤢',test:'🧪'};
+
+let charts={};
+let currentFilter=null, currentPage=0;
+const PAGE_SIZE=20;
+let chartsInit={overview:false,analytics:false};
+
+function switchPage(name,el){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.getElementById('page-'+name).classList.add('active');
+    el.classList.add('active');
+    document.querySelector('.page-wrapper').scrollTop=0;
+    if(name==='overview'&&!chartsInit.overview){loadStats();loadLastDetection();chartsInit.overview=true}
+    if(name==='analytics'&&!chartsInit.analytics){loadAnalytics();chartsInit.analytics=true}
+    if(name==='events')loadEvents();
+    if(name==='system'){loadModelInfo();loadSettings()}
+}
+
+function toast(msg,dur=2500){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur)}
+async function api(path,opts={}){return(await fetch(path,opts)).json()}
+
+// ── Last Detection with all class bars ───────────────────────────────────
+
+async function loadLastDetection(){
+    const data = await api('/api/last-detection');
+    const card = document.getElementById('lastDetectionCard');
+
+    if(!data.last){card.style.display='none';return}
+
+    const ld = data.last;
+    const probs = data.all_probs || {};
+    card.style.display='block';
+
+    document.getElementById('ldIcon').textContent = CRY_EMOJI[ld.cry_type]||'❓';
+    document.getElementById('ldType').textContent = ld.cry_type;
+    document.getElementById('ldTime').textContent = ld.timestamp;
+
+    // Sort by confidence descending
+    const sorted = Object.entries(probs).sort((a,b)=>b[1]-a[1]);
+    const maxProb = sorted.length ? sorted[0][1] : 0;
+
+    const barsEl = document.getElementById('ldBars');
+    barsEl.innerHTML = sorted.map(([label, prob])=>{
+        const pct = Math.round(prob*100);
+        const color = COLORS[label]||'#636e72';
+        const isWinner = label===ld.cry_type;
+        return `
+            <div class="ld-bar-row">
+                <div class="ld-bar-label">${CRY_EMOJI[label]||'❓'} ${label}</div>
+                <div class="ld-bar-track">
+                    <div class="ld-bar-fill ${isWinner?'ld-bar-winner':''}"
+                         style="width:${pct}%;background:${isWinner?color:color+'60'};color:${isWinner?'#fff':'var(--text2)'}"
+                    >${pct>10?pct+'%':''}</div>
+                </div>
+                <div class="ld-bar-pct" style="color:${isWinner?color:'var(--text2)'}">${pct}%</div>
+            </div>`;
+    }).join('');
+
+    // Animate bars in
+    setTimeout(()=>{
+        barsEl.querySelectorAll('.ld-bar-fill').forEach(el=>{
+            el.style.transition='width 0.8s ease';
+        });
+    },50);
+}
+
+// ── Stats ────────────────────────────────────────────────────────────────
+
+async function loadStats(){
+    const data=await api('/api/stats');
+    const s=data.summary;
+    document.getElementById('totalEvents').textContent=s.total;
+    document.getElementById('todayEvents').textContent=s.today;
+    document.getElementById('syncedEvents').textContent=s.synced;
+    document.getElementById('unsyncedEvents').textContent=s.unsynced;
+
+    const dL=data.distribution.map(d=>d.cry_type),dD=data.distribution.map(d=>d.count);
+    if(charts.dist)charts.dist.destroy();
+    charts.dist=new Chart(document.getElementById('distributionChart'),{
+        type:'doughnut',data:{labels:dL,datasets:[{data:dD,backgroundColor:dL.map(l=>COLORS[l]||'#636e72'),borderWidth:0}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#b2bec3',padding:14,font:{size:12}}}}}
+    });
+
+    const hrs=Array.from({length:24},(_,i)=>String(i).padStart(2,'0'));
+    const hMap={};data.hourly.forEach(h=>hMap[h.hour]=h.count);
+    if(charts.hourly)charts.hourly.destroy();
+    charts.hourly=new Chart(document.getElementById('hourlyChart'),{
+        type:'bar',data:{labels:hrs,datasets:[{data:hrs.map(h=>hMap[h]||0),backgroundColor:'rgba(108,92,231,0.5)',borderColor:'#6c5ce7',borderWidth:1,borderRadius:4}]},
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#b2bec3',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{display:false}}}
+    });
+}
+
+// ── Analytics ────────────────────────────────────────────────────────────
+
+async function loadAnalytics(){
+    const data=await api('/api/stats');
+    if(charts.daily)charts.daily.destroy();
+    charts.daily=new Chart(document.getElementById('dailyChart'),{
+        type:'line',data:{labels:data.daily.map(d=>d.day),datasets:[{data:data.daily.map(d=>d.count),borderColor:'#00cec9',backgroundColor:'rgba(0,206,201,0.1)',fill:true,tension:0.4,pointRadius:3}]},
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#b2bec3',maxTicksLimit:8},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{display:false}}}
+    });
+
+    const days=[...new Set(data.daily_by_type.map(d=>d.day))].sort(),types=[...new Set(data.daily_by_type.map(d=>d.cry_type))];
+    const ds=types.map(t=>({label:t,data:days.map(day=>{const m=data.daily_by_type.find(d=>d.day===day&&d.cry_type===t);return m?m.count:0}),backgroundColor:COLORS[t]||'#636e72',borderRadius:3}));
+    if(charts.dailyType)charts.dailyType.destroy();
+    charts.dailyType=new Chart(document.getElementById('dailyTypeChart'),{
+        type:'bar',data:{labels:days,datasets:ds},
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'}},y:{stacked:true,ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{labels:{color:'#b2bec3'}}}}
+    });
+}
+
+// ── Events ───────────────────────────────────────────────────────────────
+
+async function loadEvents(){
+    const params=new URLSearchParams({limit:PAGE_SIZE,offset:currentPage*PAGE_SIZE});
+    if(currentFilter)params.set('cry_type',currentFilter);
+    const data=await api('/api/events?'+params);
+    const tbody=document.getElementById('eventsBody');
+    if(!data.events.length){
+        tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--text2);">No events</td></tr>';
+    }else{
+        tbody.innerHTML=data.events.map(e=>{
+            const conf=e.confidence||0;
+            const pct=Math.round(conf*100);
+            const cc=conf>=0.8?'color:#00b894':conf>=0.5?'color:#fdcb6e':'color:#d63031';
+            return`<tr><td>#${e.id}</td><td>${e.timestamp}</td><td><span class="badge badge-${e.cry_type}">${e.cry_type}</span></td><td style="${cc};font-weight:600">${pct}%</td><td><span class="badge ${e.synced?'badge-synced':'badge-pending'}">${e.synced?'Synced':'Pending'}</span></td></tr>`;
+        }).join('');
+    }
+    const total=data.total,pages=Math.ceil(total/PAGE_SIZE);
+    document.getElementById('eventsPagination').textContent=`${currentPage+1} / ${pages||1}  (${total})`;
+    document.getElementById('prevBtn').disabled=currentPage===0;
+    document.getElementById('nextBtn').disabled=currentPage>=pages-1;
+}
+function filterEvents(type,btn){currentFilter=type;currentPage=0;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');loadEvents()}
+function changePage(d){currentPage+=d;loadEvents()}
+
+// ── Model / Settings ─────────────────────────────────────────────────────
+
+async function loadModelInfo(){
+    const m=await api('/api/model-info');
+    const items=[['Active Model',m.active_model],['Model Size',m.yamnet_head_size_mb?(m.yamnet_base_size_mb+' + '+m.yamnet_head_size_mb+' MB'):(m.tflite_size_mb?m.tflite_size_mb+' MB':'N/A')],['Embedding',m.embedding_dim?m.embedding_dim+'-dim':'N/A'],['Features',m.feature_type],['Sample Rate',m.sample_rate+' Hz'],['Duration',m.duration_seconds+'s'],['Threshold',m.confidence_threshold],['Inference',m.avg_inference_ms+'ms'],['Classes','<div class="cls-badges">'+m.classes.map(c=>`<span class="cls-badge cls-badge-${c}">${c.replace('_',' ')}</span>`).join('')+'</div>']];
+    document.getElementById('modelInfo').innerHTML=items.map(([k,v])=>`<div class="model-item"><span class="key">${k}</span><span class="val">${v}</span></div>`).join('');
+    document.getElementById('trainAcc').textContent=m.test_accuracy+'%';document.getElementById('valAcc').textContent=(m.avg_inference_ms||'—')+'ms';
+    setTimeout(()=>{document.getElementById('trainAccBar').style.width=m.test_accuracy+'%';document.getElementById('valAccBar').style.width=Math.min(100,m.avg_inference_ms)+'%'},200);
+}
+async function loadSettings(){
+    const s=await api('/api/settings');
+    document.getElementById('settingsInfo').innerHTML=`<div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;"><div>Sample Rate: <strong>${s.sample_rate} Hz</strong></div><div>Duration: <strong>${s.duration}s</strong></div><div>Channels: <strong>${s.channels}</strong></div><div>Threshold: <strong>${s.threshold}</strong></div><div>Telegram: <strong>${s.telegram_configured?'Configured':'Not Set'}</strong></div><div>Lullabies: <strong>${s.lullabies_count} files</strong></div></div>`;
+}
+
+// ── Controls ─────────────────────────────────────────────────────────────
+
+async function playLullaby(){toast('Playing lullaby...');const r=await api('/api/play-lullaby',{method:'POST'});toast(r.message||r.status)}
+async function testTelegram(){toast('Sending test alert...');const r=await api('/api/test-telegram',{method:'POST'});toast(r.status==='ok'?'Telegram alert sent!':'Failed');loadStats();loadEvents()}
+async function runSimulation(){
+    toast('Running simulation...');
+    const r=await api('/api/simulate',{method:'POST'});
+    const el=document.getElementById('simResult');
+    if(r.status==='ok'){
+        const pct=r.confidence?Math.round(r.confidence*100):'?';
+        el.innerHTML=`<strong>Result</strong><br>File: ${r.file}<br>Actual: <span class="badge badge-${r.actual_category}">${r.actual_category}</span> Predicted: <span class="badge badge-${r.predicted}">${r.predicted}</span> Confidence: <strong>${pct}%</strong>`;
+        el.style.display='block';toast('Simulation complete!');loadStats();loadEvents();loadLastDetection();
+    }else{toast('Failed: '+r.message)}
+}
+function refreshAll(){loadStats();loadEvents();loadModelInfo();loadSettings();loadAnalytics();loadLastDetection();toast('Refreshed')}
+
+setInterval(()=>{loadStats();loadLastDetection()},30000);
+
+chartsInit.overview=true;
+loadStats();
+loadLastDetection();
+
+if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.ready();tg.expand();if(tg.themeParams){const tp=tg.themeParams;document.documentElement.style.setProperty('--bg',tp.bg_color||'#0f1117');document.documentElement.style.setProperty('--card',tp.secondary_bg_color||'#1a1d27');document.documentElement.style.setProperty('--text',tp.text_color||'#dfe6e9');document.documentElement.style.setProperty('--text2',tp.hint_color||'#b2bec3')}tg.BackButton.show();tg.BackButton.onClick(()=>tg.close())}
+</script>
+
+
+<script>
+// model-switch-js-v2
+(function(){
+  const buttons = document.querySelectorAll('#modelToggle button');
+  const sub = document.getElementById('modelToggleSub');
+  const DESCR = {
+    '3cls': '<span class="cls-badge cls-badge-hungry">hungry</span><span class="cls-badge cls-badge-no_cry">no cry</span><span class="cls-badge cls-badge-other_cry">other cry</span>',
+    '5cls': '<span class="cls-badge cls-badge-hungry">hungry</span><span class="cls-badge cls-badge-no_cry">no cry</span><span class="cls-badge cls-badge-pain">pain</span><span class="cls-badge cls-badge-tired">tired</span><span class="cls-badge cls-badge-burping">burping</span>'
+  };
+  function refresh(){
+    fetch('/api/active').then(r=>r.json()).then(d=>{
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.m === d.active));
+      if (sub && DESCR[d.active]) sub.innerHTML = DESCR[d.active];
+    }).catch(()=>{});
+  }
+  buttons.forEach(b => b.addEventListener('click', () => {
+    fetch('/api/switch/' + b.dataset.m).then(r=>r.json()).then(()=>{refresh(); if(typeof loadModelInfo==='function')loadModelInfo();});
+  }));
+  refresh();
+  setInterval(refresh, 5000);
+})();
+
+// Speaker controls
+async function lullabyPlay(){toast('Playing...');await api('/api/lullaby/play',{method:'POST'})}
+async function lullabyStop(){toast('Stopping...');await api('/api/lullaby/stop',{method:'POST'})}
+(function(){
+  var sl=document.getElementById('volSlider'),lb=document.getElementById('volLabel');
+  if(!sl)return;
+  fetch('/api/volume').then(function(r){return r.json()}).then(function(d){sl.value=d.volume;lb.textContent=d.volume+'%'});
+  sl.addEventListener('input',function(){lb.textContent=sl.value+'%'});
+  sl.addEventListener('change',function(){fetch('/api/volume/'+sl.value,{method:'POST'})});
+})();
+</script>
+</body>
+</html>

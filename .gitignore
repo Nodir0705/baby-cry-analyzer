@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.zip
+*.db
+model/*.npy
+.DS_Store
+\n# Datasets\nBaby Cry Sence Dataset/\ndonateacry_corpus/
+\n# Models (Generated)\n*.tflite\n*.h5\n*.joblib
