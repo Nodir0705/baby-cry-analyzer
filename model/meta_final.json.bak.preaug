@@ -1,0 +1,18 @@
+{
+  "classes": [
+    "hungry",
+    "no_cry",
+    "other_cry"
+  ],
+  "feature_mean": -46.81727981567383,
+  "feature_std": 21.60567283630371,
+  "pytorch_test_acc": 0.9300970873786408,
+  "tflite_test_acc": 0.9300970873786408,
+  "keras_vs_pytorch_max_diff": 5.364418029785156e-07,
+  "input_shape": [
+    1,
+    64,
+    87,
+    1
+  ]
+}

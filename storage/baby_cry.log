@@ -1,0 +1,3011 @@
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] hungry     conf=0.495 rms=0.0408
+[pred] hungry     conf=0.888 rms=0.0939
+Cry detected: hungry (0.89) | {'hungry': 0.8883, 'no_cry': 0.0369, 'other_cry': 0.0748}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] hungry     conf=0.844 rms=0.2547
+[pred] other_cry  conf=0.640 rms=0.1654
+[pred] hungry     conf=0.812 rms=0.1574
+Cry detected: hungry (0.81) | {'hungry': 0.812, 'no_cry': 0.0452, 'other_cry': 0.1428}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.799 rms=0.2045
+[pred] other_cry  conf=0.563 rms=0.2254
+[pred] hungry     conf=0.573 rms=0.0962
+[pred] hungry     conf=0.585 rms=0.1852
+[pred] hungry     conf=0.882 rms=0.2538
+Cry detected: hungry (0.88) | {'hungry': 0.8818, 'no_cry': 0.0084, 'other_cry': 0.1098}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] other_cry  conf=0.592 rms=0.1759
+[pred] hungry     conf=0.880 rms=0.1618
+[pred] hungry     conf=0.646 rms=0.1034
+[pred] no_cry     conf=0.996 rms=0.1485
+[pred] no_cry     conf=0.615 rms=0.1573
+[pred] no_cry     conf=0.996 rms=0.1268
+[pred] no_cry     conf=0.997 rms=0.1606
+[pred] no_cry     conf=0.995 rms=0.0372
+[pred] no_cry     conf=0.993 rms=0.0522
+[pred] no_cry     conf=0.984 rms=0.2033
+[pred] no_cry     conf=0.963 rms=0.2614
+[pred] no_cry     conf=0.957 rms=0.1463
+[pred] no_cry     conf=0.541 rms=0.1008
+[pred] no_cry     conf=0.930 rms=0.2189
+[pred] no_cry     conf=0.788 rms=0.2717
+[pred] no_cry     conf=0.707 rms=0.2072
+[pred] no_cry     conf=1.000 rms=0.3441
+[pred] no_cry     conf=0.994 rms=0.2086
+[pred] no_cry     conf=0.992 rms=0.2839
+[pred] no_cry     conf=0.974 rms=0.2376
+[pred] no_cry     conf=0.951 rms=0.2602
+[pred] no_cry     conf=0.775 rms=0.2000
+[pred] no_cry     conf=0.992 rms=0.1758
+[pred] no_cry     conf=0.995 rms=0.2146
+[pred] no_cry     conf=1.000 rms=0.1540
+[pred] no_cry     conf=0.951 rms=0.1185
+[pred] no_cry     conf=0.992 rms=0.2052
+[pred] no_cry     conf=0.779 rms=0.1814
+[pred] no_cry     conf=0.974 rms=0.1114
+[pred] no_cry     conf=0.974 rms=0.1545
+[pred] no_cry     conf=0.989 rms=0.2138
+[pred] no_cry     conf=0.999 rms=0.1458
+[pred] no_cry     conf=0.793 rms=0.1174
+[pred] no_cry     conf=0.999 rms=0.1321
+[pred] no_cry     conf=0.856 rms=0.1652
+[pred] no_cry     conf=1.000 rms=0.1457
+[pred] no_cry     conf=0.979 rms=0.1244
+[pred] no_cry     conf=0.993 rms=0.1930
+[pred] no_cry     conf=1.000 rms=0.2129
+[pred] no_cry     conf=0.994 rms=0.1739
+[pred] no_cry     conf=0.994 rms=0.1635
+[pred] no_cry     conf=0.995 rms=0.1602
+[pred] no_cry     conf=0.999 rms=0.1632
+[pred] no_cry     conf=0.931 rms=0.1415
+[pred] no_cry     conf=0.608 rms=0.1274
+[pred] no_cry     conf=1.000 rms=0.1916
+[pred] no_cry     conf=0.672 rms=0.1289
+[pred] no_cry     conf=0.963 rms=0.1916
+[pred] no_cry     conf=0.998 rms=0.1078
+[pred] no_cry     conf=0.987 rms=0.0617
+[pred] no_cry     conf=1.000 rms=0.0876
+[pred] no_cry     conf=1.000 rms=0.0937
+[pred] no_cry     conf=0.996 rms=0.1277
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=0.999 rms=0.0871
+[pred] no_cry     conf=1.000 rms=0.0576
+[pred] no_cry     conf=0.927 rms=0.1681
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] hungry     conf=0.928 rms=0.2056
+Cry detected: hungry (0.93) | {'hungry': 0.9279, 'no_cry': 0.0043, 'other_cry': 0.0678}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] other_cry  conf=0.636 rms=0.1593
+[pred] no_cry     conf=0.571 rms=0.0910
+[pred] hungry     conf=0.868 rms=0.1825
+Cry detected: hungry (0.87) | {'hungry': 0.868, 'no_cry': 0.001, 'other_cry': 0.131}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.713 rms=0.2106
+[pred] hungry     conf=0.602 rms=0.1066
+[pred] hungry     conf=0.793 rms=0.1399
+Cry detected: hungry (0.79) | {'hungry': 0.7929, 'no_cry': 0.0043, 'other_cry': 0.2028}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.945 rms=0.2102
+[pred] other_cry  conf=0.519 rms=0.1796
+[pred] no_cry     conf=0.736 rms=0.0898
+[pred] hungry     conf=0.906 rms=0.1394
+Cry detected: hungry (0.91) | {'hungry': 0.9064, 'no_cry': 0.0086, 'other_cry': 0.085}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=0.753 rms=0.2246
+[pred] other_cry  conf=0.527 rms=0.0693
+[pred] other_cry  conf=0.622 rms=0.1133
+[pred] no_cry     conf=0.726 rms=0.0593
+[pred] hungry     conf=0.496 rms=0.1071
+[pred] hungry     conf=0.828 rms=0.1881
+Cry detected: hungry (0.83) | {'hungry': 0.8281, 'no_cry': 0.157, 'other_cry': 0.0149}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] no_cry     conf=0.892 rms=0.2492
+[pred] hungry     conf=0.990 rms=0.2245
+Cry detected: hungry (0.99) | {'hungry': 0.9903, 'no_cry': 0.0018, 'other_cry': 0.0078}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] no_cry     conf=0.726 rms=0.2074
+[pred] no_cry     conf=0.988 rms=0.1562
+[pred] hungry     conf=0.863 rms=0.0681
+Cry detected: hungry (0.86) | {'hungry': 0.863, 'no_cry': 0.0876, 'other_cry': 0.0493}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.483 rms=0.1878
+[pred] hungry     conf=0.668 rms=0.1477
+[pred] hungry     conf=0.948 rms=0.1536
+Cry detected: hungry (0.95) | {'hungry': 0.9476, 'no_cry': 0.0485, 'other_cry': 0.004}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] no_cry     conf=0.997 rms=0.1185
+[pred] hungry     conf=0.679 rms=0.1536
+[pred] hungry     conf=0.869 rms=0.1112
+Cry detected: hungry (0.87) | {'hungry': 0.8685, 'no_cry': 0.1073, 'other_cry': 0.0242}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.884 rms=0.1539
+[pred] hungry     conf=0.947 rms=0.2027
+[pred] no_cry     conf=0.833 rms=0.1241
+[pred] no_cry     conf=0.977 rms=0.1159
+[pred] no_cry     conf=0.973 rms=0.1690
+[pred] no_cry     conf=0.735 rms=0.1539
+[pred] no_cry     conf=0.708 rms=0.3924
+[pred] no_cry     conf=0.951 rms=0.1244
+[pred] no_cry     conf=0.999 rms=0.0495
+[pred] no_cry     conf=0.966 rms=0.0556
+[pred] no_cry     conf=0.996 rms=0.0559
+[pred] no_cry     conf=1.000 rms=0.1008
+[pred] no_cry     conf=1.000 rms=0.1434
+[pred] no_cry     conf=1.000 rms=0.0906
+[pred] no_cry     conf=0.998 rms=0.1118
+[pred] no_cry     conf=1.000 rms=0.1082
+[pred] no_cry     conf=0.975 rms=0.0426
+[pred] no_cry     conf=0.994 rms=0.0329
+[pred] no_cry     conf=0.999 rms=0.0734
+[pred] no_cry     conf=1.000 rms=0.1201
+[pred] no_cry     conf=0.998 rms=0.1121
+[pred] no_cry     conf=1.000 rms=0.1257
+[pred] no_cry     conf=1.000 rms=0.1426
+[pred] no_cry     conf=1.000 rms=0.1023
+[pred] no_cry     conf=1.000 rms=0.1207
+[pred] no_cry     conf=1.000 rms=0.0814
+[pred] no_cry     conf=1.000 rms=0.1099
+[pred] no_cry     conf=1.000 rms=0.1057
+[pred] no_cry     conf=0.998 rms=0.0713
+[pred] no_cry     conf=0.997 rms=0.1096
+[pred] no_cry     conf=0.988 rms=0.1950
+[pred] no_cry     conf=0.998 rms=0.1178
+[pred] no_cry     conf=0.998 rms=0.1839
+[pred] no_cry     conf=0.953 rms=0.1896
+[pred] no_cry     conf=0.998 rms=0.1773
+[pred] no_cry     conf=0.942 rms=0.1257
+[pred] no_cry     conf=0.984 rms=0.1896
+[pred] no_cry     conf=1.000 rms=0.1007
+[pred] no_cry     conf=1.000 rms=0.0492
+[pred] no_cry     conf=1.000 rms=0.0612
+[pred] no_cry     conf=0.998 rms=0.1093
+[pred] hungry     conf=0.537 rms=0.0746
+[pred] no_cry     conf=0.552 rms=0.1141
+[pred] no_cry     conf=0.997 rms=0.1518
+[pred] no_cry     conf=0.968 rms=0.1013
+[pred] no_cry     conf=0.798 rms=0.0646
+[pred] no_cry     conf=0.790 rms=0.0259
+[pred] hungry     conf=0.700 rms=0.0397
+[pred] no_cry     conf=0.902 rms=0.0322
+[pred] no_cry     conf=0.994 rms=0.0399
+[pred] no_cry     conf=0.991 rms=0.1252
+[pred] no_cry     conf=0.876 rms=0.1016
+[pred] no_cry     conf=0.990 rms=0.1248
+[pred] no_cry     conf=0.995 rms=0.3165
+[pred] no_cry     conf=0.997 rms=0.1591
+[pred] no_cry     conf=0.960 rms=0.1862
+[pred] no_cry     conf=0.998 rms=0.2418
+[pred] no_cry     conf=0.891 rms=0.1186
+[pred] no_cry     conf=0.994 rms=0.1850
+[pred] no_cry     conf=0.950 rms=0.1053
+[pred] no_cry     conf=0.992 rms=0.1441
+[pred] no_cry     conf=0.987 rms=0.1427
+[pred] no_cry     conf=0.959 rms=0.1728
+[pred] no_cry     conf=0.995 rms=0.0673
+[pred] no_cry     conf=0.990 rms=0.1841
+[pred] no_cry     conf=0.996 rms=0.1489
+[pred] no_cry     conf=0.969 rms=0.0381
+[pred] no_cry     conf=0.989 rms=0.0904
+[pred] no_cry     conf=0.992 rms=0.1453
+[pred] no_cry     conf=1.000 rms=0.0591
+[pred] no_cry     conf=0.994 rms=0.0899
+[pred] no_cry     conf=0.985 rms=0.0751
+[pred] no_cry     conf=0.996 rms=0.0487
+[pred] no_cry     conf=0.991 rms=0.1378
+[pred] no_cry     conf=0.955 rms=0.1028
+[pred] no_cry     conf=0.969 rms=0.2383
+[pred] no_cry     conf=1.000 rms=0.2085
+[pred] no_cry     conf=0.992 rms=0.1330
+[pred] no_cry     conf=0.989 rms=0.0510
+[pred] no_cry     conf=1.000 rms=0.0807
+[pred] no_cry     conf=1.000 rms=0.1607
+[pred] no_cry     conf=0.999 rms=0.1076
+[pred] no_cry     conf=0.999 rms=0.1091
+[pred] no_cry     conf=1.000 rms=0.1968
+[pred] no_cry     conf=1.000 rms=0.0896
+[pred] no_cry     conf=1.000 rms=0.1321
+[pred] no_cry     conf=0.999 rms=0.1271
+[pred] no_cry     conf=0.999 rms=0.1484
+[pred] no_cry     conf=0.999 rms=0.1206
+[pred] no_cry     conf=0.999 rms=0.1344
+[pred] no_cry     conf=1.000 rms=0.0565
+[pred] no_cry     conf=0.960 rms=0.0820
+[pred] no_cry     conf=0.999 rms=0.1147
+[pred] no_cry     conf=1.000 rms=0.1589
+[pred] no_cry     conf=1.000 rms=0.1584
+[pred] no_cry     conf=1.000 rms=0.2193
+[pred] no_cry     conf=1.000 rms=0.2214
+[pred] no_cry     conf=1.000 rms=0.1171
+[pred] no_cry     conf=1.000 rms=0.1596
+[pred] no_cry     conf=1.000 rms=0.1256
+[pred] no_cry     conf=1.000 rms=0.1558
+[pred] no_cry     conf=1.000 rms=0.2335
+[pred] no_cry     conf=1.000 rms=0.1690
+[pred] no_cry     conf=1.000 rms=0.1842
+[pred] no_cry     conf=1.000 rms=0.2082
+[pred] no_cry     conf=1.000 rms=0.2032
+[pred] no_cry     conf=1.000 rms=0.2397
+[pred] no_cry     conf=1.000 rms=0.1462
+[pred] no_cry     conf=1.000 rms=0.2180
+[pred] no_cry     conf=1.000 rms=0.1229
+[pred] no_cry     conf=1.000 rms=0.2202
+[pred] no_cry     conf=1.000 rms=0.2369
+[pred] no_cry     conf=1.000 rms=0.1939
+[pred] no_cry     conf=1.000 rms=0.1320
+[pred] no_cry     conf=1.000 rms=0.1014
+[pred] no_cry     conf=1.000 rms=0.2302
+[pred] no_cry     conf=1.000 rms=0.2191
+[pred] no_cry     conf=0.999 rms=0.1303
+[pred] no_cry     conf=1.000 rms=0.1020
+[pred] no_cry     conf=1.000 rms=0.0996
+[pred] no_cry     conf=1.000 rms=0.2005
+[pred] no_cry     conf=1.000 rms=0.2097
+[pred] no_cry     conf=1.000 rms=0.1692
+[pred] no_cry     conf=1.000 rms=0.1682
+[pred] no_cry     conf=1.000 rms=0.1233
+[pred] no_cry     conf=1.000 rms=0.1804
+[pred] no_cry     conf=1.000 rms=0.2568
+[pred] no_cry     conf=1.000 rms=0.2109
+[pred] no_cry     conf=1.000 rms=0.1560
+[pred] no_cry     conf=1.000 rms=0.0951
+[pred] no_cry     conf=1.000 rms=0.1444
+[pred] no_cry     conf=0.999 rms=0.1848
+[pred] no_cry     conf=1.000 rms=0.1041
+[pred] no_cry     conf=0.939 rms=0.1739
+[pred] no_cry     conf=0.993 rms=0.0456
+[pred] no_cry     conf=0.998 rms=0.1704
+[pred] no_cry     conf=0.999 rms=0.1362
+[pred] no_cry     conf=0.999 rms=0.1293
+[pred] no_cry     conf=1.000 rms=0.1006
+[pred] no_cry     conf=0.966 rms=0.0848
+[pred] no_cry     conf=1.000 rms=0.0859
+[pred] no_cry     conf=0.988 rms=0.1371
+[pred] no_cry     conf=0.862 rms=0.1158
+[pred] no_cry     conf=0.890 rms=0.1233
+[pred] no_cry     conf=0.999 rms=0.0332
+[pred] no_cry     conf=0.906 rms=0.1249
+[pred] no_cry     conf=0.714 rms=0.1061
+[pred] no_cry     conf=0.973 rms=0.0997
+[pred] no_cry     conf=0.642 rms=0.1238
+[pred] no_cry     conf=1.000 rms=0.2118
+[pred] no_cry     conf=0.990 rms=0.1308
+[pred] no_cry     conf=0.978 rms=0.0904
+[pred] no_cry     conf=0.997 rms=0.1955
+[pred] no_cry     conf=0.981 rms=0.2173
+[pred] no_cry     conf=1.000 rms=0.1875
+[pred] no_cry     conf=0.974 rms=0.1288
+[pred] no_cry     conf=0.994 rms=0.1583
+[pred] no_cry     conf=0.974 rms=0.1826
+[pred] no_cry     conf=0.975 rms=0.1396
+[pred] no_cry     conf=0.969 rms=0.2146
+[pred] no_cry     conf=0.882 rms=0.1128
+[pred] no_cry     conf=0.950 rms=0.1389
+[pred] no_cry     conf=0.866 rms=0.1393
+[pred] no_cry     conf=1.000 rms=0.1734
+[pred] no_cry     conf=0.863 rms=0.1799
+[pred] no_cry     conf=0.975 rms=0.1622
+[pred] no_cry     conf=0.986 rms=0.0864
+[pred] no_cry     conf=0.999 rms=0.1424
+[pred] no_cry     conf=0.773 rms=0.1153
+[pred] no_cry     conf=0.970 rms=0.1988
+[pred] no_cry     conf=0.999 rms=0.2475
+[pred] no_cry     conf=0.993 rms=0.2155
+[pred] no_cry     conf=0.847 rms=0.1910
+[pred] no_cry     conf=0.994 rms=0.2388
+[pred] no_cry     conf=0.960 rms=0.1625
+[pred] no_cry     conf=0.800 rms=0.0952
+[pred] no_cry     conf=0.991 rms=0.1733
+[pred] no_cry     conf=0.953 rms=0.1400
+[pred] no_cry     conf=0.438 rms=0.1753
+[pred] no_cry     conf=0.953 rms=0.1468
+[pred] hungry     conf=0.647 rms=0.1096
+[pred] no_cry     conf=0.924 rms=0.1611
+[pred] no_cry     conf=0.681 rms=0.1206
+[pred] no_cry     conf=1.000 rms=0.1618
+[pred] no_cry     conf=0.993 rms=0.1367
+[pred] no_cry     conf=0.862 rms=0.0800
+[pred] no_cry     conf=0.994 rms=0.1282
+[pred] no_cry     conf=0.875 rms=0.1712
+[pred] no_cry     conf=1.000 rms=0.0838
+[pred] no_cry     conf=0.990 rms=0.1675
+[pred] no_cry     conf=0.915 rms=0.2683
+[pred] no_cry     conf=0.856 rms=0.1483
+[pred] no_cry     conf=0.996 rms=0.2064
+[pred] no_cry     conf=0.883 rms=0.1583
+[pred] no_cry     conf=1.000 rms=0.2098
+[pred] no_cry     conf=0.999 rms=0.1730
+[pred] no_cry     conf=0.991 rms=0.1843
+[pred] no_cry     conf=0.999 rms=0.1729
+[pred] no_cry     conf=0.991 rms=0.1550
+[pred] no_cry     conf=0.995 rms=0.1433
+[pred] no_cry     conf=0.952 rms=0.2239
+[pred] no_cry     conf=0.950 rms=0.0839
+[pred] no_cry     conf=0.998 rms=0.1152
+[pred] no_cry     conf=0.863 rms=0.1518
+[pred] no_cry     conf=0.997 rms=0.0993
+[pred] no_cry     conf=0.998 rms=0.1988
+[pred] no_cry     conf=0.948 rms=0.2206
+[pred] no_cry     conf=0.944 rms=0.1832
+[pred] no_cry     conf=0.949 rms=0.2392
+[pred] no_cry     conf=0.737 rms=0.1577
+[pred] no_cry     conf=0.942 rms=0.1464
+[pred] no_cry     conf=0.839 rms=0.1268
+[pred] no_cry     conf=0.997 rms=0.1363
+[pred] hungry     conf=0.503 rms=0.1484
+[pred] no_cry     conf=0.999 rms=0.1908
+[pred] hungry     conf=0.814 rms=0.1218
+Cry detected: hungry (0.81) | {'hungry': 0.8136, 'no_cry': 0.1129, 'other_cry': 0.0735}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] no_cry     conf=1.000 rms=0.1547
+[pred] no_cry     conf=0.995 rms=0.1801
+[pred] no_cry     conf=0.983 rms=0.1635
+[pred] no_cry     conf=0.997 rms=0.1395
+[pred] no_cry     conf=0.991 rms=0.1705
+[pred] no_cry     conf=0.720 rms=0.1195
+[pred] no_cry     conf=0.742 rms=0.1010
+[pred] no_cry     conf=0.408 rms=0.2152
+[pred] no_cry     conf=0.974 rms=0.1385
+[pred] no_cry     conf=1.000 rms=0.2426
+[pred] no_cry     conf=0.997 rms=0.1516
+[pred] no_cry     conf=0.873 rms=0.1655
+[pred] no_cry     conf=0.941 rms=0.1914
+[pred] no_cry     conf=0.987 rms=0.1371
+[pred] no_cry     conf=0.996 rms=0.1415
+[pred] no_cry     conf=0.624 rms=0.1293
+[pred] no_cry     conf=0.994 rms=0.1355
+[pred] no_cry     conf=0.999 rms=0.1839
+[pred] no_cry     conf=0.712 rms=0.1360
+[pred] no_cry     conf=0.924 rms=0.2810
+[pred] no_cry     conf=1.000 rms=0.2465
+[pred] no_cry     conf=0.992 rms=0.2049
+[pred] no_cry     conf=0.875 rms=0.1354
+[pred] no_cry     conf=0.784 rms=0.1719
+[pred] no_cry     conf=0.826 rms=0.1362
+[pred] no_cry     conf=0.994 rms=0.1062
+[pred] no_cry     conf=0.998 rms=0.1894
+[pred] no_cry     conf=1.000 rms=0.1985
+[pred] no_cry     conf=0.999 rms=0.1933
+[pred] no_cry     conf=0.984 rms=0.2082
+[pred] no_cry     conf=1.000 rms=0.1197
+[pred] no_cry     conf=0.978 rms=0.1347
+[pred] no_cry     conf=0.672 rms=0.0887
+[pred] no_cry     conf=0.977 rms=0.1362
+[pred] no_cry     conf=1.000 rms=0.1705
+[pred] no_cry     conf=0.996 rms=0.2371
+[pred] no_cry     conf=0.999 rms=0.1280
+[pred] no_cry     conf=0.893 rms=0.1863
+[pred] no_cry     conf=0.998 rms=0.1643
+[pred] no_cry     conf=0.949 rms=0.1588
+[pred] no_cry     conf=0.967 rms=0.0926
+[pred] no_cry     conf=0.998 rms=0.1346
+[pred] no_cry     conf=0.998 rms=0.1692
+[pred] no_cry     conf=0.868 rms=0.2123
+[pred] no_cry     conf=0.754 rms=0.2473
+[pred] no_cry     conf=0.963 rms=0.1570
+[pred] no_cry     conf=0.864 rms=0.1469
+[pred] no_cry     conf=0.999 rms=0.1944
+[pred] no_cry     conf=0.990 rms=0.1832
+[pred] no_cry     conf=0.987 rms=0.1671
+[pred] no_cry     conf=0.909 rms=0.1722
+[pred] no_cry     conf=0.819 rms=0.0916
+[pred] no_cry     conf=1.000 rms=0.1644
+[pred] no_cry     conf=1.000 rms=0.1862
+[pred] no_cry     conf=0.878 rms=0.1780
+[pred] no_cry     conf=0.993 rms=0.0432
+[pred] no_cry     conf=0.999 rms=0.0846
+[pred] no_cry     conf=0.997 rms=0.0779
+[pred] no_cry     conf=0.999 rms=0.0846
+[pred] no_cry     conf=1.000 rms=0.1714
+[pred] no_cry     conf=1.000 rms=0.1234
+[pred] no_cry     conf=1.000 rms=0.0959
+[pred] no_cry     conf=0.995 rms=0.1386
+[pred] no_cry     conf=1.000 rms=0.1277
+[pred] no_cry     conf=0.932 rms=0.2000
+[pred] no_cry     conf=0.740 rms=0.1203
+[pred] no_cry     conf=0.501 rms=0.1575
+[pred] no_cry     conf=0.950 rms=0.1899
+[pred] no_cry     conf=1.000 rms=0.1961
+[pred] no_cry     conf=0.999 rms=0.1868
+[pred] no_cry     conf=0.971 rms=0.1468
+[pred] no_cry     conf=0.942 rms=0.1493
+[pred] no_cry     conf=0.996 rms=0.1812
+[pred] hungry     conf=0.653 rms=0.1040
+[pred] no_cry     conf=1.000 rms=0.2083
+[pred] no_cry     conf=0.997 rms=0.1573
+[pred] no_cry     conf=0.781 rms=0.1201
+[pred] no_cry     conf=1.000 rms=0.1609
+[pred] no_cry     conf=0.984 rms=0.1331
+[pred] no_cry     conf=0.995 rms=0.1728
+[pred] no_cry     conf=0.999 rms=0.0978
+[pred] no_cry     conf=0.945 rms=0.1303
+[pred] no_cry     conf=0.998 rms=0.1332
+[pred] no_cry     conf=0.996 rms=0.2113
+[pred] no_cry     conf=0.998 rms=0.1002
+[pred] no_cry     conf=0.969 rms=0.1374
+[pred] no_cry     conf=0.993 rms=0.2087
+[pred] no_cry     conf=0.981 rms=0.1082
+[pred] no_cry     conf=0.991 rms=0.1351
+[pred] no_cry     conf=0.836 rms=0.1194
+[pred] no_cry     conf=1.000 rms=0.1109
+[pred] no_cry     conf=0.853 rms=0.1458
+[pred] no_cry     conf=0.796 rms=0.1378
+[pred] no_cry     conf=1.000 rms=0.0934
+[pred] no_cry     conf=1.000 rms=0.1055
+[pred] no_cry     conf=0.516 rms=0.1254
+[pred] no_cry     conf=0.957 rms=0.1828
+[pred] no_cry     conf=0.993 rms=0.2387
+[pred] no_cry     conf=0.827 rms=0.1295
+[pred] no_cry     conf=0.999 rms=0.1415
+[pred] no_cry     conf=0.945 rms=0.1333
+[pred] no_cry     conf=0.995 rms=0.1100
+[pred] no_cry     conf=0.964 rms=0.1827
+[pred] no_cry     conf=0.854 rms=0.1254
+[pred] no_cry     conf=0.991 rms=0.2046
+[pred] no_cry     conf=0.894 rms=0.1790
+[pred] no_cry     conf=1.000 rms=0.2139
+[pred] no_cry     conf=0.985 rms=0.1326
+[pred] no_cry     conf=0.977 rms=0.1712
+[pred] no_cry     conf=0.998 rms=0.1656
+[pred] no_cry     conf=1.000 rms=0.1638
+[pred] no_cry     conf=1.000 rms=0.1111
+[pred] no_cry     conf=0.999 rms=0.1503
+[pred] no_cry     conf=0.995 rms=0.1724
+[pred] no_cry     conf=0.996 rms=0.1335
+[pred] no_cry     conf=0.998 rms=0.1397
+[pred] no_cry     conf=0.711 rms=0.1468
+[pred] no_cry     conf=1.000 rms=0.1522
+[pred] no_cry     conf=0.995 rms=0.0927
+[pred] no_cry     conf=0.998 rms=0.1067
+[pred] no_cry     conf=0.991 rms=0.1382
+[pred] no_cry     conf=0.999 rms=0.2115
+[pred] no_cry     conf=0.975 rms=0.2311
+[pred] no_cry     conf=0.996 rms=0.1072
+[pred] no_cry     conf=0.993 rms=0.1591
+[pred] no_cry     conf=1.000 rms=0.1837
+[pred] no_cry     conf=0.610 rms=0.1191
+[pred] no_cry     conf=1.000 rms=0.1591
+[pred] no_cry     conf=0.960 rms=0.0682
+[pred] no_cry     conf=0.998 rms=0.2017
+[pred] no_cry     conf=0.998 rms=0.0916
+[pred] no_cry     conf=0.952 rms=0.0991
+[pred] no_cry     conf=1.000 rms=0.1282
+[pred] no_cry     conf=0.953 rms=0.0822
+[pred] no_cry     conf=1.000 rms=0.1357
+[pred] no_cry     conf=0.992 rms=0.1545
+[pred] no_cry     conf=0.946 rms=0.1067
+[pred] no_cry     conf=0.928 rms=0.0908
+[pred] no_cry     conf=0.938 rms=0.0788
+[pred] no_cry     conf=0.844 rms=0.1771
+[pred] no_cry     conf=0.999 rms=0.1279
+[pred] no_cry     conf=0.973 rms=0.1269
+[pred] no_cry     conf=0.999 rms=0.2196
+[pred] no_cry     conf=0.963 rms=0.1209
+[pred] no_cry     conf=1.000 rms=0.1476
+[pred] no_cry     conf=1.000 rms=0.1827
+[pred] no_cry     conf=0.994 rms=0.1865
+[pred] no_cry     conf=1.000 rms=0.1900
+[pred] no_cry     conf=0.932 rms=0.2488
+[pred] no_cry     conf=0.996 rms=0.1877
+[pred] no_cry     conf=0.966 rms=0.1481
+[pred] no_cry     conf=0.995 rms=0.1107
+[pred] no_cry     conf=0.896 rms=0.1800
+[pred] no_cry     conf=1.000 rms=0.2433
+[pred] no_cry     conf=0.644 rms=0.0836
+[pred] no_cry     conf=1.000 rms=0.2047
+[pred] no_cry     conf=0.995 rms=0.1332
+[pred] no_cry     conf=0.997 rms=0.1537
+[pred] no_cry     conf=0.991 rms=0.1865
+[pred] no_cry     conf=0.999 rms=0.1250
+[pred] no_cry     conf=0.947 rms=0.0605
+[pred] no_cry     conf=0.848 rms=0.0569
+[pred] no_cry     conf=0.991 rms=0.1121
+[pred] no_cry     conf=1.000 rms=0.1647
+[pred] no_cry     conf=0.999 rms=0.1518
+[pred] no_cry     conf=0.999 rms=0.1118
+[pred] no_cry     conf=0.979 rms=0.1159
+[pred] no_cry     conf=0.997 rms=0.1163
+[pred] no_cry     conf=0.975 rms=0.1681
+[pred] no_cry     conf=0.998 rms=0.0432
+[pred] no_cry     conf=0.996 rms=0.0359
+[pred] no_cry     conf=1.000 rms=0.0862
+[pred] no_cry     conf=0.999 rms=0.0830
+[pred] no_cry     conf=1.000 rms=0.0289
+[pred] no_cry     conf=1.000 rms=0.0413
+[pred] no_cry     conf=1.000 rms=0.0317
+[pred] no_cry     conf=1.000 rms=0.0268
+[pred] no_cry     conf=0.998 rms=0.1216
+[pred] no_cry     conf=0.913 rms=0.1011
+[pred] no_cry     conf=0.905 rms=0.1034
+[pred] no_cry     conf=0.992 rms=0.1935
+[pred] no_cry     conf=0.900 rms=0.0972
+[pred] hungry     conf=0.509 rms=0.1442
+[pred] no_cry     conf=1.000 rms=0.1474
+[pred] no_cry     conf=0.904 rms=0.2237
+[pred] no_cry     conf=0.951 rms=0.0947
+[pred] no_cry     conf=0.947 rms=0.0868
+[pred] no_cry     conf=0.787 rms=0.1540
+[pred] no_cry     conf=0.982 rms=0.1839
+[pred] no_cry     conf=0.968 rms=0.1548
+[pred] no_cry     conf=0.999 rms=0.2140
+[pred] no_cry     conf=1.000 rms=0.1268
+[pred] no_cry     conf=0.995 rms=0.1951
+[pred] no_cry     conf=0.930 rms=0.1267
+[pred] no_cry     conf=0.934 rms=0.1346
+[pred] no_cry     conf=0.995 rms=0.1655
+[pred] no_cry     conf=0.997 rms=0.2331
+[pred] no_cry     conf=0.979 rms=0.1873
+[pred] no_cry     conf=0.996 rms=0.2977
+[pred] no_cry     conf=0.989 rms=0.0792
+[pred] no_cry     conf=1.000 rms=0.1735
+[pred] no_cry     conf=0.993 rms=0.0988
+[pred] no_cry     conf=0.985 rms=0.1267
+[pred] no_cry     conf=0.984 rms=0.1248
+[pred] no_cry     conf=0.977 rms=0.1608
+[pred] no_cry     conf=1.000 rms=0.1552
+[pred] no_cry     conf=0.941 rms=0.2083
+[pred] no_cry     conf=0.988 rms=0.1383
+[pred] no_cry     conf=0.858 rms=0.1681
+[pred] no_cry     conf=0.844 rms=0.1420
+[pred] no_cry     conf=0.987 rms=0.1910
+[pred] no_cry     conf=0.930 rms=0.1343
+[pred] no_cry     conf=0.918 rms=0.2076
+[pred] no_cry     conf=0.999 rms=0.1663
+[pred] no_cry     conf=0.990 rms=0.1658
+[pred] no_cry     conf=0.999 rms=0.1948
+[pred] no_cry     conf=1.000 rms=0.1897
+[pred] no_cry     conf=0.972 rms=0.2094
+[pred] no_cry     conf=0.997 rms=0.1940
+[pred] no_cry     conf=0.988 rms=0.2758
+[pred] no_cry     conf=0.999 rms=0.1719
+[pred] no_cry     conf=0.961 rms=0.2107
+[pred] no_cry     conf=0.998 rms=0.2316
+[pred] no_cry     conf=0.990 rms=0.1878
+[pred] no_cry     conf=0.893 rms=0.1260
+[pred] no_cry     conf=0.999 rms=0.1909
+[pred] no_cry     conf=0.992 rms=0.1794
+[pred] no_cry     conf=0.998 rms=0.1895
+[pred] no_cry     conf=0.989 rms=0.2216
+[pred] no_cry     conf=0.972 rms=0.1374
+[pred] no_cry     conf=0.998 rms=0.2113
+[pred] no_cry     conf=0.963 rms=0.1888
+[pred] no_cry     conf=0.997 rms=0.1919
+[pred] no_cry     conf=0.999 rms=0.1581
+[pred] no_cry     conf=0.942 rms=0.1799
+[pred] no_cry     conf=0.946 rms=0.1732
+[pred] no_cry     conf=0.999 rms=0.2022
+[pred] no_cry     conf=0.920 rms=0.1598
+[pred] no_cry     conf=0.992 rms=0.2100
+[pred] no_cry     conf=0.999 rms=0.1629
+[pred] no_cry     conf=1.000 rms=0.1468
+[pred] no_cry     conf=0.993 rms=0.1593
+[pred] no_cry     conf=0.998 rms=0.1619
+[pred] no_cry     conf=0.995 rms=0.1736
+[pred] no_cry     conf=0.978 rms=0.1482
+[pred] no_cry     conf=0.975 rms=0.1162
+[pred] no_cry     conf=1.000 rms=0.2136
+[pred] no_cry     conf=0.666 rms=0.0594
+[pred] no_cry     conf=0.998 rms=0.1997
+[pred] no_cry     conf=0.997 rms=0.1388
+[pred] no_cry     conf=0.970 rms=0.1573
+[pred] no_cry     conf=0.979 rms=0.1191
+[pred] no_cry     conf=0.987 rms=0.1854
+[pred] no_cry     conf=0.997 rms=0.1869
+[pred] no_cry     conf=0.999 rms=0.2536
+[pred] no_cry     conf=0.994 rms=0.1817
+[pred] no_cry     conf=0.998 rms=0.2240
+[pred] no_cry     conf=0.995 rms=0.1808
+[pred] no_cry     conf=0.974 rms=0.1911
+[pred] no_cry     conf=1.000 rms=0.1778
+[pred] no_cry     conf=0.982 rms=0.1595
+[pred] no_cry     conf=0.995 rms=0.1529
+[pred] no_cry     conf=0.999 rms=0.2221
+[pred] no_cry     conf=0.938 rms=0.1777
+[pred] no_cry     conf=0.951 rms=0.1596
+[pred] hungry     conf=0.517 rms=0.1774
+[pred] no_cry     conf=0.984 rms=0.2095
+[pred] no_cry     conf=0.998 rms=0.1514
+[pred] no_cry     conf=0.646 rms=0.1366
+[pred] no_cry     conf=0.827 rms=0.1453
+[pred] no_cry     conf=0.983 rms=0.2087
+[pred] no_cry     conf=0.860 rms=0.2306
+[pred] no_cry     conf=0.928 rms=0.1673
+[pred] no_cry     conf=0.701 rms=0.2897
+[pred] no_cry     conf=0.982 rms=0.2492
+[pred] no_cry     conf=0.998 rms=0.1643
+[pred] no_cry     conf=0.658 rms=0.2252
+[pred] no_cry     conf=0.967 rms=0.1034
+[pred] no_cry     conf=0.962 rms=0.1517
+[pred] no_cry     conf=0.583 rms=0.1693
+[pred] no_cry     conf=0.998 rms=0.1653
+[pred] no_cry     conf=0.995 rms=0.1520
+[pred] no_cry     conf=0.900 rms=0.1624
+[pred] no_cry     conf=0.992 rms=0.2000
+[pred] no_cry     conf=0.992 rms=0.2094
+[pred] no_cry     conf=0.996 rms=0.2057
+[pred] no_cry     conf=0.991 rms=0.2260
+[pred] no_cry     conf=0.995 rms=0.1544
+[pred] no_cry     conf=0.990 rms=0.1747
+[pred] no_cry     conf=0.996 rms=0.1947
+[pred] no_cry     conf=0.860 rms=0.1677
+[pred] no_cry     conf=0.997 rms=0.1883
+[pred] no_cry     conf=0.724 rms=0.2006
+[pred] no_cry     conf=0.978 rms=0.1595
+[pred] no_cry     conf=0.946 rms=0.1968
+[pred] no_cry     conf=0.946 rms=0.2898
+[pred] no_cry     conf=0.951 rms=0.2111
+[pred] no_cry     conf=0.938 rms=0.2218
+[pred] no_cry     conf=0.579 rms=0.1896
+[pred] no_cry     conf=0.996 rms=0.2762
+[pred] no_cry     conf=0.985 rms=0.2350
+[pred] no_cry     conf=0.962 rms=0.1847
+[pred] no_cry     conf=0.961 rms=0.1484
+[pred] no_cry     conf=0.998 rms=0.1936
+[pred] no_cry     conf=0.992 rms=0.1845
+[pred] no_cry     conf=0.997 rms=0.1789
+[pred] no_cry     conf=0.860 rms=0.1803
+[pred] no_cry     conf=0.989 rms=0.0945
+[pred] no_cry     conf=0.840 rms=0.1610
+[pred] no_cry     conf=0.930 rms=0.2827
+[pred] hungry     conf=0.668 rms=0.1876
+[pred] no_cry     conf=0.982 rms=0.2617
+[pred] no_cry     conf=0.793 rms=0.2173
+[pred] no_cry     conf=0.884 rms=0.2478
+[pred] no_cry     conf=0.974 rms=0.1644
+[pred] no_cry     conf=0.999 rms=0.1744
+[pred] no_cry     conf=0.986 rms=0.1888
+[pred] no_cry     conf=0.560 rms=0.2423
+[pred] no_cry     conf=0.684 rms=0.2995
+[pred] no_cry     conf=0.991 rms=0.2044
+[pred] hungry     conf=0.501 rms=0.1627
+[pred] no_cry     conf=0.885 rms=0.2799
+[pred] no_cry     conf=0.859 rms=0.1920
+[pred] no_cry     conf=0.999 rms=0.2212
+[pred] no_cry     conf=0.986 rms=0.1594
+[pred] no_cry     conf=0.998 rms=0.2009
+[pred] no_cry     conf=0.957 rms=0.2373
+[pred] no_cry     conf=0.968 rms=0.2273
+[pred] no_cry     conf=0.979 rms=0.1351
+[pred] no_cry     conf=0.967 rms=0.2146
+[pred] no_cry     conf=0.580 rms=0.1253
+[pred] no_cry     conf=0.870 rms=0.2174
+[pred] no_cry     conf=0.612 rms=0.1308
+[pred] no_cry     conf=0.998 rms=0.0932
+[pred] no_cry     conf=0.996 rms=0.2375
+[pred] no_cry     conf=0.875 rms=0.1395
+[pred] no_cry     conf=0.916 rms=0.0723
+[pred] no_cry     conf=0.979 rms=0.1097
+[pred] no_cry     conf=1.000 rms=0.1669
+[pred] no_cry     conf=0.959 rms=0.1144
+[pred] no_cry     conf=0.886 rms=0.1001
+[pred] no_cry     conf=0.998 rms=0.1615
+[pred] no_cry     conf=0.998 rms=0.1196
+[pred] no_cry     conf=0.998 rms=0.1052
+[pred] no_cry     conf=0.999 rms=0.1755
+[pred] no_cry     conf=0.773 rms=0.1667
+[pred] no_cry     conf=1.000 rms=0.1849
+[pred] no_cry     conf=0.999 rms=0.1740
+[pred] no_cry     conf=0.779 rms=0.0936
+[pred] no_cry     conf=0.999 rms=0.1615
+[pred] no_cry     conf=0.995 rms=0.1430
+[pred] no_cry     conf=0.694 rms=0.1681
+[pred] no_cry     conf=0.953 rms=0.1450
+[pred] no_cry     conf=0.993 rms=0.2121
+[pred] no_cry     conf=0.979 rms=0.1790
+[pred] no_cry     conf=1.000 rms=0.1558
+[pred] no_cry     conf=0.997 rms=0.2214
+[pred] no_cry     conf=0.969 rms=0.2400
+[pred] no_cry     conf=0.964 rms=0.1896
+[pred] no_cry     conf=0.885 rms=0.1354
+[pred] no_cry     conf=0.972 rms=0.2127
+[pred] no_cry     conf=0.855 rms=0.2241
+[pred] no_cry     conf=0.815 rms=0.1812
+[pred] no_cry     conf=0.920 rms=0.2395
+[pred] no_cry     conf=0.998 rms=0.2191
+[pred] no_cry     conf=0.985 rms=0.1001
+[pred] no_cry     conf=0.902 rms=0.1121
+[pred] no_cry     conf=0.995 rms=0.0784
+[pred] no_cry     conf=0.730 rms=0.2036
+[pred] no_cry     conf=0.874 rms=0.0958
+[pred] no_cry     conf=0.979 rms=0.1518
+[pred] no_cry     conf=0.975 rms=0.1489
+[pred] no_cry     conf=0.988 rms=0.1502
+[pred] no_cry     conf=0.984 rms=0.1729
+[pred] no_cry     conf=0.958 rms=0.1874
+[pred] no_cry     conf=0.994 rms=0.1489
+[pred] no_cry     conf=0.751 rms=0.1592
+[pred] no_cry     conf=0.982 rms=0.1147
+[pred] no_cry     conf=0.955 rms=0.1184
+[pred] no_cry     conf=0.989 rms=0.0907
+[pred] no_cry     conf=0.981 rms=0.1916
+[pred] no_cry     conf=0.842 rms=0.1554
+[pred] no_cry     conf=0.643 rms=0.3743
+[pred] hungry     conf=0.509 rms=0.1273
+[pred] no_cry     conf=0.681 rms=0.1462
+[pred] no_cry     conf=0.936 rms=0.0520
+[pred] no_cry     conf=0.915 rms=0.1630
+[pred] hungry     conf=0.535 rms=0.1665
+[pred] no_cry     conf=0.912 rms=0.1070
+[pred] no_cry     conf=0.972 rms=0.0855
+[pred] hungry     conf=0.506 rms=0.1688
+[pred] no_cry     conf=0.699 rms=0.1371
+[pred] no_cry     conf=0.913 rms=0.1670
+[pred] no_cry     conf=0.990 rms=0.1581
+[pred] no_cry     conf=0.815 rms=0.1219
+[pred] no_cry     conf=0.983 rms=0.1774
+[pred] no_cry     conf=0.994 rms=0.2401
+[pred] no_cry     conf=0.998 rms=0.1396
+[pred] no_cry     conf=0.893 rms=0.1243
+[pred] no_cry     conf=0.996 rms=0.1399
+[pred] no_cry     conf=0.999 rms=0.1265
+[pred] no_cry     conf=0.990 rms=0.2342
+[pred] no_cry     conf=0.742 rms=0.1208
+[pred] no_cry     conf=0.968 rms=0.1478
+[pred] no_cry     conf=0.996 rms=0.2109
+[pred] no_cry     conf=1.000 rms=0.1660
+[pred] no_cry     conf=0.996 rms=0.1737
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=1.000 rms=0.0324
+[pred] no_cry     conf=0.999 rms=0.0619
+[pred] no_cry     conf=0.981 rms=0.0273
+[pred] no_cry     conf=1.000 rms=0.0301
+[pred] no_cry     conf=0.968 rms=0.1667
+[pred] no_cry     conf=0.890 rms=0.1676
+[pred] no_cry     conf=0.745 rms=0.1796
+[pred] no_cry     conf=0.691 rms=0.1979
+[pred] no_cry     conf=0.776 rms=0.1649
+[pred] no_cry     conf=0.723 rms=0.1837
+[pred] no_cry     conf=0.816 rms=0.1740
+[pred] no_cry     conf=0.879 rms=0.1722
+[pred] no_cry     conf=0.980 rms=0.1937
+[pred] no_cry     conf=0.999 rms=0.1708
+[pred] no_cry     conf=0.732 rms=0.1667
+[pred] no_cry     conf=0.789 rms=0.1461
+[pred] no_cry     conf=0.999 rms=0.0834
+[pred] no_cry     conf=1.000 rms=0.0255
+[pred] no_cry     conf=1.000 rms=0.0891
+[pred] no_cry     conf=1.000 rms=0.0362
+[pred] no_cry     conf=0.993 rms=0.1048
+[pred] no_cry     conf=0.988 rms=0.1391
+[pred] no_cry     conf=0.985 rms=0.1594
+[pred] no_cry     conf=0.800 rms=0.2465
+[pred] no_cry     conf=0.996 rms=0.1859
+[pred] no_cry     conf=0.848 rms=0.1966
+[pred] no_cry     conf=0.837 rms=0.1841
+[pred] no_cry     conf=0.829 rms=0.2295
+[pred] no_cry     conf=0.881 rms=0.1902
+[pred] no_cry     conf=0.832 rms=0.0590
+[pred] no_cry     conf=0.834 rms=0.1812
+[pred] no_cry     conf=0.873 rms=0.1985
+[pred] no_cry     conf=0.826 rms=0.2125
+[pred] no_cry     conf=0.978 rms=0.0495
+[pred] no_cry     conf=1.000 rms=0.1011
+[pred] no_cry     conf=1.000 rms=0.0320
+[pred] no_cry     conf=0.994 rms=0.0333
+[pred] no_cry     conf=0.767 rms=0.2059
+[pred] no_cry     conf=0.937 rms=0.1906
+[pred] no_cry     conf=0.902 rms=0.1507
+[pred] no_cry     conf=0.928 rms=0.2313
+[pred] no_cry     conf=0.973 rms=0.1361
+[pred] no_cry     conf=0.758 rms=0.1919
+[pred] no_cry     conf=0.713 rms=0.1959
+[pred] no_cry     conf=0.782 rms=0.2177
+[pred] no_cry     conf=0.677 rms=0.1930
+[pred] no_cry     conf=0.573 rms=0.2074
+[pred] no_cry     conf=0.863 rms=0.1927
+[pred] no_cry     conf=0.767 rms=0.1867
+[pred] no_cry     conf=0.893 rms=0.1767
+[pred] no_cry     conf=0.888 rms=0.2239
+[pred] no_cry     conf=0.809 rms=0.1874
+[pred] no_cry     conf=0.756 rms=0.2210
+[pred] no_cry     conf=0.973 rms=0.2054
+[pred] no_cry     conf=0.785 rms=0.1601
+[pred] no_cry     conf=0.679 rms=0.1955
+[pred] no_cry     conf=0.867 rms=0.1928
+[pred] no_cry     conf=0.915 rms=0.1965
+[pred] no_cry     conf=0.883 rms=0.1678
+[pred] no_cry     conf=0.709 rms=0.1870
+[pred] no_cry     conf=0.590 rms=0.1887
+[pred] no_cry     conf=0.742 rms=0.1920
+[pred] no_cry     conf=0.617 rms=0.1636
+[pred] no_cry     conf=0.706 rms=0.2020
+[pred] no_cry     conf=0.823 rms=0.1948
+[pred] no_cry     conf=0.702 rms=0.1841
+[pred] no_cry     conf=0.872 rms=0.1874
+[pred] no_cry     conf=0.656 rms=0.1817
+[pred] no_cry     conf=0.696 rms=0.1357
+[pred] no_cry     conf=0.626 rms=0.1781
+[pred] no_cry     conf=0.682 rms=0.2066
+[pred] no_cry     conf=0.613 rms=0.2020
+[pred] no_cry     conf=0.690 rms=0.1733
+[pred] no_cry     conf=0.650 rms=0.1767
+[pred] no_cry     conf=0.584 rms=0.1588
+[pred] no_cry     conf=0.639 rms=0.1628
+[pred] no_cry     conf=0.763 rms=0.2031
+[pred] no_cry     conf=0.726 rms=0.1717
+[pred] no_cry     conf=0.589 rms=0.1878
+[pred] no_cry     conf=0.608 rms=0.1924
+[pred] no_cry     conf=0.616 rms=0.1901
+[pred] no_cry     conf=0.454 rms=0.1759
+[pred] no_cry     conf=0.656 rms=0.1806
+[pred] no_cry     conf=0.678 rms=0.1785
+[pred] no_cry     conf=0.801 rms=0.1787
+[pred] no_cry     conf=0.755 rms=0.1927
+[pred] no_cry     conf=0.632 rms=0.2000
+[pred] no_cry     conf=0.686 rms=0.2045
+[pred] no_cry     conf=0.714 rms=0.2083
+[pred] no_cry     conf=0.496 rms=0.1829
+[pred] no_cry     conf=0.552 rms=0.1749
+Expression 'alsa_snd_pcm_poll_descriptors_revents( self->pcm, pfds, self->nfds, &revents )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 3665
+Expression 'PaAlsaStreamComponent_EndPolling( &self->capture, capturePfds, &pollCapture, &xrun )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 3887
+Expression 'PaAlsaStream_WaitForFrames( stream, &framesAvail, &xrun )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 4285
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=1.000 rms=0.0306
+[pred] no_cry     conf=1.000 rms=0.0343
+[pred] no_cry     conf=0.889 rms=0.1711
+[pred] no_cry     conf=0.878 rms=0.2001
+[pred] no_cry     conf=1.000 rms=0.0341
+[pred] no_cry     conf=1.000 rms=0.0254
+[pred] no_cry     conf=1.000 rms=0.0401
+[pred] no_cry     conf=1.000 rms=0.0806
+[pred] no_cry     conf=0.989 rms=0.0210
+[pred] no_cry     conf=1.000 rms=0.0514
+[pred] no_cry     conf=1.000 rms=0.0712
+[pred] no_cry     conf=1.000 rms=0.0285
+[pred] no_cry     conf=1.000 rms=0.0305
+[pred] no_cry     conf=1.000 rms=0.0532
+[pred] no_cry     conf=1.000 rms=0.0279
+[pred] no_cry     conf=0.997 rms=0.0528
+[pred] no_cry     conf=0.994 rms=0.1066
+[pred] no_cry     conf=0.989 rms=0.1554
+[pred] no_cry     conf=1.000 rms=0.0219
+[pred] no_cry     conf=0.902 rms=0.1834
+[pred] no_cry     conf=0.719 rms=0.1923
+[pred] no_cry     conf=0.835 rms=0.1807
+[pred] no_cry     conf=0.841 rms=0.1924
+[pred] no_cry     conf=1.000 rms=0.0331
+[pred] no_cry     conf=0.999 rms=0.0285
+[pred] no_cry     conf=1.000 rms=0.0623
+[pred] no_cry     conf=0.996 rms=0.2404
+[pred] no_cry     conf=0.974 rms=0.2396
+[pred] no_cry     conf=0.993 rms=0.2200
+[pred] no_cry     conf=0.999 rms=0.2193
+[pred] no_cry     conf=0.998 rms=0.2719
+[pred] no_cry     conf=0.996 rms=0.2639
+[pred] no_cry     conf=0.999 rms=0.2064
+[pred] no_cry     conf=0.998 rms=0.2035
+[pred] no_cry     conf=0.994 rms=0.2218
+[pred] no_cry     conf=0.998 rms=0.2113
+[pred] no_cry     conf=0.991 rms=0.2782
+[pred] no_cry     conf=0.999 rms=0.2579
+[pred] no_cry     conf=0.986 rms=0.2339
+[pred] no_cry     conf=0.995 rms=0.2033
+[pred] no_cry     conf=0.999 rms=0.1762
+[pred] no_cry     conf=0.996 rms=0.2794
+[pred] no_cry     conf=0.998 rms=0.2174
+[pred] no_cry     conf=0.998 rms=0.2216
+[pred] no_cry     conf=0.999 rms=0.2313
+[pred] no_cry     conf=0.997 rms=0.2564
+[pred] no_cry     conf=0.977 rms=0.2102
+[pred] no_cry     conf=0.997 rms=0.2293
+[pred] no_cry     conf=0.999 rms=0.2383
+[pred] no_cry     conf=0.999 rms=0.2665
+[pred] no_cry     conf=0.998 rms=0.2884
+[pred] no_cry     conf=0.997 rms=0.1961
+[pred] no_cry     conf=0.998 rms=0.2417
+[pred] no_cry     conf=0.998 rms=0.2485
+[pred] no_cry     conf=0.999 rms=0.2051
+[pred] no_cry     conf=0.993 rms=0.2576
+[pred] no_cry     conf=0.999 rms=0.2277
+[pred] no_cry     conf=0.996 rms=0.2404
+[pred] no_cry     conf=0.999 rms=0.1848
+[pred] no_cry     conf=0.990 rms=0.2091
+[pred] no_cry     conf=0.997 rms=0.2563
+[pred] no_cry     conf=0.999 rms=0.2337
+[pred] no_cry     conf=0.993 rms=0.2282
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=0.916 rms=0.2619
+[pred] no_cry     conf=0.934 rms=0.2271
+[pred] no_cry     conf=0.918 rms=0.1383
+[pred] no_cry     conf=0.849 rms=0.1108
+[pred] no_cry     conf=0.883 rms=0.1661
+[pred] other_cry  conf=0.522 rms=0.1372
+[pred] no_cry     conf=0.990 rms=0.1235
+[pred] no_cry     conf=0.983 rms=0.1468
+[pred] no_cry     conf=0.887 rms=0.1029
+[pred] no_cry     conf=0.612 rms=0.0946
+[pred] no_cry     conf=1.000 rms=0.1350
+[pred] no_cry     conf=1.000 rms=0.1380
+[pred] no_cry     conf=0.997 rms=0.1822
+[pred] no_cry     conf=0.996 rms=0.0944
+[pred] other_cry  conf=0.651 rms=0.1551
+[pred] no_cry     conf=0.959 rms=0.1384
+[pred] no_cry     conf=0.721 rms=0.0920
+[pred] no_cry     conf=0.995 rms=0.2470
+[pred] no_cry     conf=0.981 rms=0.1733
+[pred] no_cry     conf=0.998 rms=0.1631
+[pred] no_cry     conf=0.988 rms=0.0965
+[pred] no_cry     conf=0.999 rms=0.2043
+[pred] no_cry     conf=0.997 rms=0.1565
+[pred] no_cry     conf=1.000 rms=0.1510
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=0.900 rms=0.0954
+[pred] no_cry     conf=0.990 rms=0.1923
+[pred] no_cry     conf=0.990 rms=0.1639
+[pred] no_cry     conf=0.992 rms=0.0967
+[pred] other_cry  conf=0.694 rms=0.1737
+[pred] no_cry     conf=0.925 rms=0.1358
+[pred] no_cry     conf=0.532 rms=0.0838
+[pred] no_cry     conf=0.983 rms=0.2223
+[pred] no_cry     conf=0.997 rms=0.1668
+[pred] no_cry     conf=0.995 rms=0.2164
+[pred] no_cry     conf=0.940 rms=0.2273
+[pred] no_cry     conf=0.934 rms=0.2377
+[pred] no_cry     conf=0.895 rms=0.2100
+[pred] hungry     conf=0.571 rms=0.2008
+[pred] no_cry     conf=0.886 rms=0.2927
+[pred] no_cry     conf=0.982 rms=0.1561
+[pred] no_cry     conf=0.936 rms=0.0758
+[pred] no_cry     conf=0.996 rms=0.1074
+[pred] no_cry     conf=0.977 rms=0.1995
+[pred] no_cry     conf=0.987 rms=0.0471
+[pred] no_cry     conf=0.996 rms=0.0601
+[pred] no_cry     conf=0.995 rms=0.0288
+[pred] no_cry     conf=0.995 rms=0.0624
+[pred] no_cry     conf=0.999 rms=0.2203
+[pred] no_cry     conf=0.979 rms=0.2145
+[pred] no_cry     conf=0.841 rms=0.1918
+[pred] no_cry     conf=0.940 rms=0.2074
+[pred] no_cry     conf=0.926 rms=0.1776
+[pred] no_cry     conf=0.861 rms=0.1937
+[pred] no_cry     conf=0.788 rms=0.1930
+[pred] no_cry     conf=0.996 rms=0.0278
+[pred] no_cry     conf=0.874 rms=0.0755
+[pred] no_cry     conf=0.952 rms=0.2000
+[pred] no_cry     conf=0.916 rms=0.2154
+[pred] no_cry     conf=0.906 rms=0.2058
+[pred] no_cry     conf=0.856 rms=0.1811
+[pred] no_cry     conf=0.866 rms=0.2035
+[pred] no_cry     conf=0.822 rms=0.1958
+[pred] no_cry     conf=0.897 rms=0.2092
+[pred] no_cry     conf=0.767 rms=0.2037
+[pred] no_cry     conf=0.884 rms=0.1952
+[pred] no_cry     conf=0.559 rms=0.0734
+[pred] no_cry     conf=0.980 rms=0.1543
+[pred] no_cry     conf=0.856 rms=0.1126
+[pred] no_cry     conf=0.997 rms=0.0532
+[pred] no_cry     conf=0.966 rms=0.1427
+[pred] no_cry     conf=0.840 rms=0.2049
+[pred] no_cry     conf=0.821 rms=0.1807
+[pred] no_cry     conf=0.839 rms=0.1864
+[pred] no_cry     conf=0.711 rms=0.2007
+[pred] no_cry     conf=0.952 rms=0.1065
+[pred] no_cry     conf=0.874 rms=0.1760
+[pred] no_cry     conf=0.964 rms=0.0253
+[pred] no_cry     conf=0.998 rms=0.0881
+[pred] no_cry     conf=0.910 rms=0.1747
+[pred] no_cry     conf=0.782 rms=0.1546
+[pred] no_cry     conf=0.864 rms=0.2071
+[pred] no_cry     conf=0.865 rms=0.1823
+[pred] no_cry     conf=0.779 rms=0.1900
+[pred] no_cry     conf=0.748 rms=0.1751
+[pred] no_cry     conf=0.770 rms=0.1841
+[pred] no_cry     conf=0.962 rms=0.0872
+[pred] no_cry     conf=0.981 rms=0.1576
+[pred] no_cry     conf=0.996 rms=0.1905
+[pred] no_cry     conf=0.988 rms=0.2198
+[pred] no_cry     conf=0.938 rms=0.1924
+[pred] no_cry     conf=0.955 rms=0.1515
+[pred] no_cry     conf=0.915 rms=0.2227
+[pred] no_cry     conf=0.994 rms=0.1828
+[pred] no_cry     conf=0.963 rms=0.2031
+[pred] no_cry     conf=0.848 rms=0.2099
+[pred] no_cry     conf=0.984 rms=0.2414
+[pred] no_cry     conf=0.981 rms=0.2188
+[pred] no_cry     conf=0.978 rms=0.2202
+[pred] no_cry     conf=0.712 rms=0.1548
+[pred] no_cry     conf=0.992 rms=0.2725
+[pred] no_cry     conf=0.994 rms=0.1955
+[pred] no_cry     conf=0.990 rms=0.2255
+[pred] no_cry     conf=0.981 rms=0.2091
+[pred] no_cry     conf=0.844 rms=0.2251
+[pred] no_cry     conf=0.995 rms=0.2338
+[pred] no_cry     conf=0.908 rms=0.2582
+[pred] no_cry     conf=0.932 rms=0.1873
+[pred] no_cry     conf=0.792 rms=0.1511
+[pred] no_cry     conf=0.969 rms=0.1675
+[pred] no_cry     conf=0.974 rms=0.2404
+[pred] no_cry     conf=0.956 rms=0.1986
+[pred] no_cry     conf=0.996 rms=0.1929
+[pred] no_cry     conf=0.899 rms=0.1065
+[pred] no_cry     conf=0.983 rms=0.1617
+[pred] no_cry     conf=0.506 rms=0.1997
+[pred] hungry     conf=0.577 rms=0.1275
+[pred] no_cry     conf=0.993 rms=0.1744
+[pred] no_cry     conf=0.990 rms=0.2012
+[pred] hungry     conf=0.848 rms=0.1972
+Cry detected: hungry (0.85) | {'hungry': 0.8476, 'no_cry': 0.1168, 'other_cry': 0.0356}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] hungry     conf=0.825 rms=0.1979
+[pred] hungry     conf=0.718 rms=0.1661
+[pred] no_cry     conf=0.996 rms=0.1772
+[pred] no_cry     conf=0.990 rms=0.1876
+[pred] no_cry     conf=0.990 rms=0.1719
+[pred] no_cry     conf=0.990 rms=0.2456
+[pred] no_cry     conf=0.993 rms=0.2025
+[pred] no_cry     conf=0.989 rms=0.2778
+[pred] no_cry     conf=0.999 rms=0.2023
+[pred] no_cry     conf=0.991 rms=0.2357
+[pred] no_cry     conf=0.997 rms=0.1968
+[pred] no_cry     conf=0.999 rms=0.2334
+[pred] no_cry     conf=0.999 rms=0.2292
+[pred] no_cry     conf=0.996 rms=0.1840
+[pred] no_cry     conf=0.895 rms=0.2360
+[pred] no_cry     conf=0.994 rms=0.1871
+[pred] no_cry     conf=0.842 rms=0.2099
+[pred] no_cry     conf=0.955 rms=0.2912
+[pred] no_cry     conf=0.996 rms=0.2257
+[pred] no_cry     conf=0.995 rms=0.2229
+[pred] no_cry     conf=0.999 rms=0.1720
+[pred] no_cry     conf=0.972 rms=0.2334
+[pred] no_cry     conf=0.848 rms=0.2402
+[pred] no_cry     conf=1.000 rms=0.1752
+[pred] no_cry     conf=0.999 rms=0.2195
+[pred] no_cry     conf=0.998 rms=0.2339
+[pred] no_cry     conf=0.998 rms=0.2853
+[pred] no_cry     conf=0.986 rms=0.2291
+[pred] no_cry     conf=0.996 rms=0.2287
+[pred] no_cry     conf=0.993 rms=0.2173
+Lullaby playback error: Command '['aplay', '-D', 'plughw:4,0', '/home/pi/baby_cry/lullabies/brahms_lullaby.wav']' timed out after 59.99978852099957 seconds
+[pred] no_cry     conf=0.997 rms=0.2185
+[pred] no_cry     conf=0.996 rms=0.2467
+[pred] no_cry     conf=0.970 rms=0.2266
+[pred] no_cry     conf=0.883 rms=0.1930
+[pred] no_cry     conf=0.743 rms=0.1842
+[pred] no_cry     conf=0.859 rms=0.1768
+[pred] no_cry     conf=0.591 rms=0.2008
+[pred] hungry     conf=0.491 rms=0.1664
+[pred] no_cry     conf=0.995 rms=0.2425
+[pred] no_cry     conf=0.986 rms=0.2327
+[pred] no_cry     conf=0.995 rms=0.2117
+[pred] no_cry     conf=0.946 rms=0.2089
+[pred] no_cry     conf=0.993 rms=0.1804
+[pred] no_cry     conf=0.893 rms=0.2219
+[pred] no_cry     conf=0.992 rms=0.2281
+[pred] no_cry     conf=0.979 rms=0.2493
+[pred] no_cry     conf=0.995 rms=0.2231
+[pred] no_cry     conf=0.967 rms=0.1726
+[pred] no_cry     conf=0.998 rms=0.1779
+[pred] no_cry     conf=0.937 rms=0.1594
+[pred] no_cry     conf=0.554 rms=0.1847
+[pred] no_cry     conf=0.992 rms=0.1510
+[pred] no_cry     conf=0.996 rms=0.1456
+[pred] no_cry     conf=0.957 rms=0.1853
+[pred] hungry     conf=0.590 rms=0.1277
+[pred] no_cry     conf=0.986 rms=0.1745
+[pred] no_cry     conf=0.948 rms=0.1542
+[pred] no_cry     conf=0.875 rms=0.1282
+[pred] no_cry     conf=0.997 rms=0.2279
+[pred] no_cry     conf=0.994 rms=0.1559
+[pred] no_cry     conf=0.963 rms=0.2185
+[pred] no_cry     conf=0.930 rms=0.2085
+[pred] no_cry     conf=0.975 rms=0.1501
+[pred] no_cry     conf=0.969 rms=0.1355
+[pred] no_cry     conf=0.727 rms=0.1771
+[pred] hungry     conf=0.770 rms=0.1815
+Cry detected: hungry (0.77) | {'hungry': 0.7697, 'no_cry': 0.0804, 'other_cry': 0.1499}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] hungry     conf=0.559 rms=0.1692
+[pred] no_cry     conf=0.999 rms=0.1732
+[pred] no_cry     conf=1.000 rms=0.2138
+[pred] no_cry     conf=1.000 rms=0.2101
+[pred] no_cry     conf=1.000 rms=0.1670
+[pred] no_cry     conf=1.000 rms=0.1790
+[pred] no_cry     conf=1.000 rms=0.1660
+[pred] no_cry     conf=1.000 rms=0.1466
+[pred] no_cry     conf=1.000 rms=0.1753
+[pred] no_cry     conf=1.000 rms=0.1891
+[pred] no_cry     conf=1.000 rms=0.2189
+[pred] no_cry     conf=1.000 rms=0.1748
+[pred] no_cry     conf=1.000 rms=0.2000
+[pred] no_cry     conf=1.000 rms=0.2171
+[pred] no_cry     conf=1.000 rms=0.1875
+[pred] no_cry     conf=1.000 rms=0.1726
+[pred] no_cry     conf=1.000 rms=0.1505
+[pred] no_cry     conf=1.000 rms=0.1321
+[pred] no_cry     conf=1.000 rms=0.1967
+[pred] no_cry     conf=1.000 rms=0.1856
+[pred] no_cry     conf=1.000 rms=0.1452
+[pred] no_cry     conf=1.000 rms=0.2224
+[pred] no_cry     conf=1.000 rms=0.1525
+[pred] no_cry     conf=1.000 rms=0.1795
+[pred] no_cry     conf=1.000 rms=0.1719
+[pred] no_cry     conf=1.000 rms=0.1885
+[pred] no_cry     conf=1.000 rms=0.1524
+[pred] no_cry     conf=1.000 rms=0.1687
+[pred] no_cry     conf=1.000 rms=0.1895
+[pred] no_cry     conf=1.000 rms=0.1787
+[pred] no_cry     conf=1.000 rms=0.1920
+Lullaby playback error: Command '['aplay', '-D', 'plughw:4,0', '/home/pi/baby_cry/lullabies/mozart_lullaby.wav']' timed out after 59.99987346400121 seconds
+[pred] no_cry     conf=1.000 rms=0.1400
+Loading 3-class CNN (v3cls)...
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  classes: ['hungry', 'no_cry', 'other_cry']
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+[pred] no_cry     conf=6.266 rms=0.2626
+[pred] no_cry     conf=6.365 rms=0.2340
+[pred] no_cry     conf=6.124 rms=0.1835
+[pred] no_cry     conf=6.401 rms=0.0875
+[pred] no_cry     conf=4.478 rms=0.1534
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  3cls classes: ['hungry', 'no_cry', 'other_cry']
+  5cls classes: ['burping', 'hungry', 'no_cry', 'pain', 'tired']
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+[classifier] switched: 3cls -> 5cls
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+                                                                                                                                                                                  Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  3cls classes: ['hungry', 'no_cry', 'other_cry']
+  5cls classes: ['burping', 'hungry', 'no_cry', 'pain', 'tired']
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Processing error: too many indices for array: array is 1-dimensional, but 2 were indexed
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 18, in <module>
+    from model.classifier import predict
+  File "/home/pi/baby_cry/model/classifier.py", line 98
+    x = ((mel_spec_db - bundle['mean']) / bundle['std']).astype(np.float32)
+                                                                           ^
+IndentationError: unindent does not match any outer indentation level
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Listening on device default at 44100Hz (resampling to 22050Hz)
+Press Ctrl+C to stop
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/home/pi/baby_cry/venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  3cls classes: ['hungry', 'no_cry', 'other_cry']
+  5cls classes: ['burping', 'hungry', 'no_cry', 'pain', 'tired']
+[pred] no_cry     conf=0.997 rms=0.1447
+[pred] no_cry     conf=1.000 rms=0.1957
+[pred] no_cry     conf=1.000 rms=0.2215
+[pred] no_cry     conf=1.000 rms=0.1960
+[pred] no_cry     conf=1.000 rms=0.2214
+[pred] no_cry     conf=1.000 rms=0.1765
+[pred] no_cry     conf=1.000 rms=0.1623
+[pred] no_cry     conf=0.999 rms=0.1705
+[pred] no_cry     conf=1.000 rms=0.1962
+[pred] no_cry     conf=1.000 rms=0.1992
+[pred] no_cry     conf=1.000 rms=0.1886
+[pred] no_cry     conf=1.000 rms=0.2382
+[pred] no_cry     conf=0.999 rms=0.2437
+[pred] no_cry     conf=1.000 rms=0.1625
+[pred] no_cry     conf=0.818 rms=0.1800
+[pred] no_cry     conf=0.998 rms=0.1518
+[pred] no_cry     conf=1.000 rms=0.1824
+[pred] no_cry     conf=0.941 rms=0.2005
+[pred] no_cry     conf=1.000 rms=0.1895
+[pred] no_cry     conf=1.000 rms=0.1617
+[pred] no_cry     conf=0.999 rms=0.2283
+[pred] no_cry     conf=0.999 rms=0.1728
+[pred] no_cry     conf=0.970 rms=0.2078
+[pred] no_cry     conf=1.000 rms=0.1584
+[pred] no_cry     conf=1.000 rms=0.1743
+[pred] no_cry     conf=0.993 rms=0.1713
+[pred] no_cry     conf=0.997 rms=0.1607
+[pred] no_cry     conf=0.998 rms=0.2441
+[pred] no_cry     conf=1.000 rms=0.2312
+[pred] no_cry     conf=1.000 rms=0.2299
+[pred] no_cry     conf=1.000 rms=0.1476
+[pred] no_cry     conf=0.999 rms=0.1420
+[pred] no_cry     conf=0.999 rms=0.1881
+[pred] no_cry     conf=1.000 rms=0.2004
+[pred] no_cry     conf=1.000 rms=0.2449
+[pred] no_cry     conf=1.000 rms=0.2355
+[pred] no_cry     conf=1.000 rms=0.2125
+[pred] no_cry     conf=1.000 rms=0.1683
+[pred] no_cry     conf=0.998 rms=0.1674
+[pred] no_cry     conf=1.000 rms=0.1389
+[pred] no_cry     conf=1.000 rms=0.2133
+[pred] no_cry     conf=1.000 rms=0.1985
+[pred] no_cry     conf=1.000 rms=0.2108
+[pred] no_cry     conf=1.000 rms=0.2533
+[pred] no_cry     conf=0.996 rms=0.1514
+[pred] no_cry     conf=0.847 rms=0.1865
+[pred] no_cry     conf=0.999 rms=0.1524
+[pred] no_cry     conf=1.000 rms=0.1877
+[pred] no_cry     conf=0.997 rms=0.1784
+[pred] no_cry     conf=1.000 rms=0.1792
+[pred] no_cry     conf=0.999 rms=0.1584
+[pred] no_cry     conf=0.999 rms=0.1968
+[pred] no_cry     conf=0.950 rms=0.1749
+[pred] no_cry     conf=0.994 rms=0.1972
+[pred] no_cry     conf=1.000 rms=0.1762
+[pred] no_cry     conf=1.000 rms=0.1663
+[pred] no_cry     conf=0.998 rms=0.1985
+[pred] no_cry     conf=0.992 rms=0.1317
+[pred] no_cry     conf=0.988 rms=0.2221
+[pred] no_cry     conf=1.000 rms=0.2316
+[pred] no_cry     conf=1.000 rms=0.2146
+[pred] no_cry     conf=1.000 rms=0.1959
+[pred] no_cry     conf=0.988 rms=0.1009
+[pred] no_cry     conf=1.000 rms=0.2215
+[pred] no_cry     conf=1.000 rms=0.1892
+[pred] no_cry     conf=1.000 rms=0.2085
+[pred] no_cry     conf=1.000 rms=0.2120
+[pred] no_cry     conf=1.000 rms=0.2148
+[pred] no_cry     conf=0.999 rms=0.1350
+[pred] no_cry     conf=0.999 rms=0.1858
+[pred] no_cry     conf=1.000 rms=0.1910
+[pred] no_cry     conf=1.000 rms=0.2103
+[pred] no_cry     conf=1.000 rms=0.2274
+[pred] no_cry     conf=1.000 rms=0.1987
+[pred] no_cry     conf=1.000 rms=0.2037
+[pred] no_cry     conf=1.000 rms=0.2282
+[pred] no_cry     conf=0.998 rms=0.2304
+[pred] no_cry     conf=0.999 rms=0.1601
+[pred] no_cry     conf=0.989 rms=0.2041
+[pred] no_cry     conf=1.000 rms=0.1682
+[pred] no_cry     conf=1.000 rms=0.1799
+[pred] no_cry     conf=1.000 rms=0.1552
+[pred] no_cry     conf=1.000 rms=0.2095
+[pred] no_cry     conf=0.898 rms=0.2128
+[pred] no_cry     conf=0.999 rms=0.1862
+[pred] no_cry     conf=1.000 rms=0.1960
+[pred] no_cry     conf=1.000 rms=0.1613
+[pred] no_cry     conf=1.000 rms=0.2173
+[pred] no_cry     conf=0.997 rms=0.2352
+[pred] no_cry     conf=0.987 rms=0.2266
+[pred] no_cry     conf=0.999 rms=0.2169
+[pred] no_cry     conf=1.000 rms=0.2268
+[pred] no_cry     conf=1.000 rms=0.1988
+[pred] no_cry     conf=1.000 rms=0.0825
+[pred] no_cry     conf=1.000 rms=0.1415
+[pred] no_cry     conf=1.000 rms=0.1978
+[pred] no_cry     conf=1.000 rms=0.2100
+[pred] no_cry     conf=1.000 rms=0.1915
+[pred] no_cry     conf=1.000 rms=0.1982
+[pred] no_cry     conf=0.998 rms=0.1185
+[pred] no_cry     conf=0.999 rms=0.2073
+[pred] no_cry     conf=0.999 rms=0.1615
+[pred] no_cry     conf=0.764 rms=0.1905
+[pred] no_cry     conf=0.999 rms=0.1485
+[pred] no_cry     conf=1.000 rms=0.1789
+[pred] no_cry     conf=0.998 rms=0.1664
+[pred] no_cry     conf=0.997 rms=0.1065
+[pred] no_cry     conf=1.000 rms=0.2202
+[pred] no_cry     conf=1.000 rms=0.1926
+[pred] no_cry     conf=1.000 rms=0.1996
+[pred] no_cry     conf=1.000 rms=0.2051
+[pred] no_cry     conf=1.000 rms=0.2201
+[pred] no_cry     conf=0.996 rms=0.1773
+[classifier] switched: 5cls -> 3cls
+[pred] no_cry     conf=1.000 rms=0.1854
+[pred] no_cry     conf=1.000 rms=0.1716
+[pred] no_cry     conf=1.000 rms=0.2184
+[pred] no_cry     conf=1.000 rms=0.2037
+[pred] no_cry     conf=1.000 rms=0.2458
+[pred] no_cry     conf=1.000 rms=0.1540
+[pred] no_cry     conf=1.000 rms=0.2016
+[pred] no_cry     conf=1.000 rms=0.1957
+[pred] no_cry     conf=1.000 rms=0.1988
+[pred] no_cry     conf=1.000 rms=0.2207
+[pred] no_cry     conf=1.000 rms=0.1830
+[pred] no_cry     conf=1.000 rms=0.2196
+[pred] no_cry     conf=1.000 rms=0.2346
+[pred] no_cry     conf=1.000 rms=0.1903
+[pred] no_cry     conf=1.000 rms=0.1779
+[pred] no_cry     conf=1.000 rms=0.1990
+[pred] no_cry     conf=1.000 rms=0.1617
+[pred] no_cry     conf=1.000 rms=0.1868
+[pred] no_cry     conf=1.000 rms=0.1704
+[pred] no_cry     conf=1.000 rms=0.1966
+[pred] no_cry     conf=1.000 rms=0.2128
+[pred] no_cry     conf=1.000 rms=0.1797
+[pred] no_cry     conf=1.000 rms=0.1638
+[pred] no_cry     conf=1.000 rms=0.1596
+[pred] no_cry     conf=1.000 rms=0.1917
+[pred] no_cry     conf=1.000 rms=0.2411
+[pred] no_cry     conf=1.000 rms=0.2111
+[pred] no_cry     conf=1.000 rms=0.2071
+[pred] no_cry     conf=1.000 rms=0.2137
+[pred] no_cry     conf=1.000 rms=0.2117
+[classifier] switched: 3cls -> 5cls
+[pred] no_cry     conf=0.848 rms=0.2576
+[pred] no_cry     conf=0.928 rms=0.2148
+[pred] no_cry     conf=0.919 rms=0.2353
+[pred] no_cry     conf=0.973 rms=0.2373
+[pred] no_cry     conf=0.716 rms=0.1955
+[pred] no_cry     conf=0.956 rms=0.2492
+[pred] burping    conf=0.944 rms=0.2530
+Cry detected: burping (0.94) | {'burping': 0.9439514875411987, 'hungry': 0.009279095567762852, 'no_cry': 0.04622727632522583, 'pain': 0.0005413013859651983, 'tired': 8.990400033326296e-07}
+Playing lullaby: /home/pi/baby_cry/lullabies/mozart_lullaby.wav
+[pred] burping    conf=0.820 rms=0.2251
+[pred] burping    conf=0.751 rms=0.2620
+[pred] burping    conf=0.914 rms=0.2137
+Cry detected: burping (0.91) | {'burping': 0.9136906266212463, 'hungry': 0.00030205765506252646, 'no_cry': 0.0859941616654396, 'pain': 1.3169802514312323e-05, 'tired': 2.5467732367445706e-09}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] no_cry     conf=0.711 rms=0.2299
+[pred] no_cry     conf=0.610 rms=0.2045
+[pred] no_cry     conf=0.869 rms=0.2230
+[pred] no_cry     conf=0.992 rms=0.2501
+[pred] no_cry     conf=0.995 rms=0.0560
+[pred] no_cry     conf=0.998 rms=0.1837
+[pred] no_cry     conf=1.000 rms=0.1863
+[pred] no_cry     conf=1.000 rms=0.2101
+[pred] no_cry     conf=1.000 rms=0.2006
+[pred] no_cry     conf=1.000 rms=0.2093
+[pred] no_cry     conf=1.000 rms=0.1828
+[pred] no_cry     conf=0.999 rms=0.2035
+[pred] no_cry     conf=1.000 rms=0.1915
+[pred] no_cry     conf=1.000 rms=0.2000
+[pred] no_cry     conf=1.000 rms=0.2278
+[pred] no_cry     conf=1.000 rms=0.1935
+[pred] no_cry     conf=1.000 rms=0.1955
+[pred] no_cry     conf=0.999 rms=0.2321
+[pred] no_cry     conf=0.997 rms=0.2292
+[pred] no_cry     conf=0.999 rms=0.1576
+[pred] no_cry     conf=0.977 rms=0.1990
+[pred] no_cry     conf=1.000 rms=0.1684
+[pred] no_cry     conf=0.999 rms=0.1295
+[pred] no_cry     conf=0.996 rms=0.1889
+[pred] no_cry     conf=0.981 rms=0.2122
+[pred] no_cry     conf=0.696 rms=0.1839
+[pred] no_cry     conf=0.967 rms=0.2446
+[pred] no_cry     conf=0.860 rms=0.2618
+[pred] no_cry     conf=0.895 rms=0.2292
+[pred] burping    conf=0.484 rms=0.2425
+[pred] burping    conf=0.936 rms=0.2173
+Cry detected: burping (0.94) | {'burping': 0.9361721277236938, 'hungry': 0.008267187513411045, 'no_cry': 0.05376724898815155, 'pain': 0.0017909901216626167, 'tired': 2.415327799099032e-06}
+Playing lullaby: /home/pi/baby_cry/lullabies/brahms_lullaby.wav
+[pred] no_cry     conf=0.619 rms=0.1946
+[pred] burping    conf=0.848 rms=0.2549
+[pred] burping    conf=0.519 rms=0.2473
+[pred] no_cry     conf=0.928 rms=0.2292
+[pred] no_cry     conf=0.816 rms=0.2452
+[pred] no_cry     conf=0.521 rms=0.2638
+[pred] no_cry     conf=0.965 rms=0.2260
+[pred] no_cry     conf=0.771 rms=0.2150
+[pred] no_cry     conf=0.646 rms=0.2146
+[pred] no_cry     conf=0.972 rms=0.1996
+[pred] no_cry     conf=0.999 rms=0.1328
+[pred] no_cry     conf=0.978 rms=0.2290
+[pred] no_cry     conf=0.988 rms=0.1832
+[pred] no_cry     conf=0.993 rms=0.2424
+[pred] no_cry     conf=0.999 rms=0.1171
+[pred] no_cry     conf=0.997 rms=0.2414
+[pred] no_cry     conf=0.996 rms=0.2167
+[pred] no_cry     conf=0.922 rms=0.2496
+[pred] burping    conf=0.552 rms=0.1893
+[classifier] switched: 5cls -> 3cls
+[pred] no_cry     conf=1.000 rms=0.2442
+[pred] no_cry     conf=0.998 rms=0.2746
+[classifier] switched: 3cls -> 5cls
+[pred] no_cry     conf=1.000 rms=0.1083
+[pred] no_cry     conf=0.995 rms=0.2053
+[pred] no_cry     conf=0.997 rms=0.1639
+[pred] no_cry     conf=1.000 rms=0.1942
+[pred] no_cry     conf=0.999 rms=0.1023
+[pred] no_cry     conf=1.000 rms=0.0604
+[pred] no_cry     conf=1.000 rms=0.2946
+[pred] no_cry     conf=0.999 rms=0.2179
+[pred] no_cry     conf=1.000 rms=0.2243
+[pred] no_cry     conf=0.999 rms=0.0520
+[pred] no_cry     conf=1.000 rms=0.3073
+[pred] no_cry     conf=1.000 rms=0.0254
+[pred] no_cry     conf=0.935 rms=0.0871
+[pred] no_cry     conf=1.000 rms=0.1963
+[pred] no_cry     conf=0.999 rms=0.1764
+[pred] no_cry     conf=0.999 rms=0.1471
+[pred] no_cry     conf=0.934 rms=0.1190
+[pred] no_cry     conf=0.960 rms=0.1687
+[pred] no_cry     conf=1.000 rms=0.1537
+[pred] no_cry     conf=0.984 rms=0.1144
+[pred] no_cry     conf=0.999 rms=0.1851
+[pred] no_cry     conf=0.992 rms=0.2001
+[pred] no_cry     conf=0.997 rms=0.1228
+[pred] no_cry     conf=0.952 rms=0.1782
+[pred] no_cry     conf=1.000 rms=0.2381
+[pred] no_cry     conf=0.996 rms=0.1652
+[pred] no_cry     conf=0.999 rms=0.2060
+[pred] no_cry     conf=1.000 rms=0.1511
+[pred] no_cry     conf=0.999 rms=0.2449
+[pred] no_cry     conf=1.000 rms=0.0272
+[pred] no_cry     conf=1.000 rms=0.0352
+[pred] no_cry     conf=1.000 rms=0.0333
+[pred] no_cry     conf=1.000 rms=0.1282
+[pred] no_cry     conf=1.000 rms=0.0253
+[pred] no_cry     conf=1.000 rms=0.2185
+[pred] no_cry     conf=1.000 rms=0.0403
+[pred] no_cry     conf=0.999 rms=0.0940
+[pred] no_cry     conf=1.000 rms=0.2183
+[pred] no_cry     conf=0.998 rms=0.0696
+[pred] no_cry     conf=1.000 rms=0.0689
+[pred] no_cry     conf=1.000 rms=0.1097
+[pred] no_cry     conf=1.000 rms=0.1380
+[pred] no_cry     conf=1.000 rms=0.0839
+[pred] no_cry     conf=1.000 rms=0.0526
+[pred] no_cry     conf=1.000 rms=0.1484
+[pred] no_cry     conf=1.000 rms=0.1961
+[pred] no_cry     conf=0.999 rms=0.1861
+[pred] no_cry     conf=0.997 rms=0.1390
+[pred] no_cry     conf=0.998 rms=0.1599
+[pred] no_cry     conf=0.998 rms=0.1566
+[pred] no_cry     conf=0.999 rms=0.1911
+[pred] no_cry     conf=0.991 rms=0.2194
+[pred] no_cry     conf=0.998 rms=0.1543
+[pred] no_cry     conf=1.000 rms=0.2149
+[pred] no_cry     conf=0.997 rms=0.1705
+[pred] no_cry     conf=0.996 rms=0.1670
+[pred] no_cry     conf=0.998 rms=0.1895
+[pred] no_cry     conf=0.999 rms=0.1542
+[pred] no_cry     conf=0.997 rms=0.1977
+[pred] no_cry     conf=1.000 rms=0.1997
+[pred] no_cry     conf=0.999 rms=0.2042
+[pred] no_cry     conf=0.997 rms=0.1866
+[pred] no_cry     conf=0.999 rms=0.1718
+[pred] no_cry     conf=0.998 rms=0.1617
+[pred] no_cry     conf=1.000 rms=0.0677
+[pred] no_cry     conf=0.997 rms=0.1633
+[pred] no_cry     conf=0.999 rms=0.1470
+[pred] no_cry     conf=0.998 rms=0.1494
+[pred] no_cry     conf=0.999 rms=0.1732
+[pred] no_cry     conf=0.998 rms=0.1970
+[pred] no_cry     conf=0.996 rms=0.1854
+[pred] no_cry     conf=1.000 rms=0.2273
+[pred] no_cry     conf=1.000 rms=0.2048
+[pred] no_cry     conf=0.996 rms=0.1855
+[pred] no_cry     conf=1.000 rms=0.1761
+[pred] no_cry     conf=1.000 rms=0.1425
+[pred] no_cry     conf=0.988 rms=0.2853
+[pred] no_cry     conf=1.000 rms=0.1823
+[pred] no_cry     conf=0.998 rms=0.1775
+[pred] no_cry     conf=0.998 rms=0.1749
+[pred] no_cry     conf=0.999 rms=0.1925
+[pred] no_cry     conf=0.999 rms=0.2641
+[pred] no_cry     conf=0.999 rms=0.0818
+[pred] no_cry     conf=0.989 rms=0.1266
+[pred] no_cry     conf=0.999 rms=0.1862
+[pred] no_cry     conf=1.000 rms=0.0213
+[pred] no_cry     conf=0.999 rms=0.0321
+[pred] no_cry     conf=0.999 rms=0.1779
+[pred] no_cry     conf=0.999 rms=0.1828
+[pred] no_cry     conf=1.000 rms=0.1691
+[pred] no_cry     conf=1.000 rms=0.2088
+[pred] no_cry     conf=0.998 rms=0.1618
+[pred] no_cry     conf=0.999 rms=0.2042
+[pred] no_cry     conf=0.999 rms=0.1898
+[pred] no_cry     conf=0.999 rms=0.0733
+[pred] no_cry     conf=1.000 rms=0.2088
+[pred] no_cry     conf=0.999 rms=0.1919
+[pred] no_cry     conf=0.999 rms=0.1783
+[pred] no_cry     conf=0.991 rms=0.1840
+[pred] no_cry     conf=0.999 rms=0.1807
+[pred] no_cry     conf=1.000 rms=0.2087
+[pred] no_cry     conf=1.000 rms=0.1311
+[pred] no_cry     conf=1.000 rms=0.1760
+[pred] no_cry     conf=0.999 rms=0.1978
+[pred] no_cry     conf=0.999 rms=0.1743
+[pred] no_cry     conf=0.999 rms=0.1677
+[pred] no_cry     conf=0.999 rms=0.1935
+[pred] no_cry     conf=0.999 rms=0.2127
+[pred] no_cry     conf=1.000 rms=0.2120
+[pred] no_cry     conf=1.000 rms=0.0325
+[pred] no_cry     conf=1.000 rms=0.0469
+[pred] no_cry     conf=1.000 rms=0.0465
+[pred] no_cry     conf=0.998 rms=0.1624
+[pred] no_cry     conf=0.998 rms=0.1765
+[pred] no_cry     conf=1.000 rms=0.1733
+[pred] no_cry     conf=1.000 rms=0.2301
+[pred] no_cry     conf=0.999 rms=0.1760
+[pred] no_cry     conf=0.999 rms=0.2002
+[pred] no_cry     conf=1.000 rms=0.1925
+[pred] no_cry     conf=0.998 rms=0.1988
+[pred] no_cry     conf=0.999 rms=0.1773
+[pred] no_cry     conf=1.000 rms=0.1950
+[pred] no_cry     conf=1.000 rms=0.1747
+[pred] no_cry     conf=1.000 rms=0.0636
+[pred] no_cry     conf=0.999 rms=0.1817
+[pred] no_cry     conf=1.000 rms=0.1924
+[pred] no_cry     conf=1.000 rms=0.1673
+[pred] no_cry     conf=1.000 rms=0.0486
+[pred] no_cry     conf=1.000 rms=0.0639
+[pred] no_cry     conf=1.000 rms=0.0329
+[pred] no_cry     conf=1.000 rms=0.0812
+[pred] no_cry     conf=1.000 rms=0.1761
+[pred] no_cry     conf=1.000 rms=0.0274
+[pred] no_cry     conf=1.000 rms=0.0463
+[pred] no_cry     conf=0.999 rms=0.1754
+[pred] no_cry     conf=0.999 rms=0.0624
+[pred] no_cry     conf=1.000 rms=0.1944
+[pred] no_cry     conf=0.999 rms=0.2124
+[pred] no_cry     conf=1.000 rms=0.2018
+[pred] no_cry     conf=0.999 rms=0.2033
+[pred] no_cry     conf=0.999 rms=0.2096
+[pred] no_cry     conf=0.999 rms=0.1932
+[pred] no_cry     conf=0.990 rms=0.1968
+[pred] no_cry     conf=0.998 rms=0.1743
+[pred] no_cry     conf=0.999 rms=0.1978
+[pred] no_cry     conf=0.999 rms=0.1907
+[pred] no_cry     conf=0.997 rms=0.1673
+[pred] no_cry     conf=0.997 rms=0.1587
+[pred] no_cry     conf=1.000 rms=0.0827
+[pred] no_cry     conf=1.000 rms=0.1036
+[pred] no_cry     conf=1.000 rms=0.0359
+[pred] no_cry     conf=1.000 rms=0.1329
+[pred] no_cry     conf=0.989 rms=0.1968
+[pred] no_cry     conf=1.000 rms=0.0450
+[pred] no_cry     conf=1.000 rms=0.0998
+[pred] no_cry     conf=0.995 rms=0.0985
+[pred] no_cry     conf=0.998 rms=0.2067
+[pred] no_cry     conf=1.000 rms=0.1645
+[pred] no_cry     conf=1.000 rms=0.0650
+[pred] no_cry     conf=1.000 rms=0.0376
+[pred] no_cry     conf=1.000 rms=0.0419
+                                                                                                                                                                                                                                                Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'
+Model loaded, starting audio...
+========================================
+  Baby Cry Analyzer - Real-Time Mode
+  Confidence threshold: 0.7
+  Cooldown: 5s
+========================================
+Error: No input device matching 'default'
+Traceback (most recent call last):
+  File "/home/pi/baby_cry/main.py", line 63, in <module>
+    listen_and_predict(on_cry_detected)
+  File "/home/pi/baby_cry/audio/capture.py", line 53, in listen_and_predict
+    with sd.InputStream(
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 1457, in __init__
+    _StreamBase.__init__(self, kind='input', wrap_callback='array',
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 833, in __init__
+    _get_stream_parameters(kind, device, channels, dtype, latency,
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2734, in _get_stream_parameters
+    device = _get_device_id(device, kind, raise_on_error=True)
+  File "/home/pi/baby_cry/venv/lib/python3.9/site-packages/sounddevice.py", line 2900, in _get_device_id
+    raise ValueError(
+ValueError: No input device matching 'default'

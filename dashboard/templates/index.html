@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Cry Analyzer — Dashboard</title>
+    <title>Chaqaloq Yig'lash Analizatori — Boshqaruv Paneli</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <style>
@@ -107,13 +107,13 @@
 <body>
 
 <div class="header">
-    <div><h1>Baby Cry Analyzer</h1><div class="subtitle">AI-Powered Detection & Soothing</div></div>
-    <div class="status-badge"><div class="status-dot"></div><span>Online</span></div>
+    <div><h1>Chaqaloq Yig'lash Analizatori</h1><div class="subtitle">AI Asosidagi Aniqlash va Tinchlantirish</div></div>
+    <div class="status-badge"><div class="status-dot"></div><span>Faol</span></div>
 </div>
 
 <div class="page-wrapper">
 
-    <!-- ═══ PAGE: Overview ═══ -->
+    <!-- ═══ SAHIFA: Umumiy ═══ -->
     <div class="page active" id="page-overview">
         <!-- Last Detection with class breakdown -->
         <div class="ld-card" id="lastDetectionCard" style="display:none;">
@@ -128,122 +128,123 @@
         </div>
 
         <div class="stat-row">
-            <div class="stat-card"><div class="value" id="totalEvents">—</div><div class="label">Total</div></div>
-            <div class="stat-card"><div class="value" id="todayEvents">—</div><div class="label">Today</div></div>
-            <div class="stat-card"><div class="value" id="syncedEvents">—</div><div class="label">Synced</div></div>
-            <div class="stat-card danger"><div class="value" id="unsyncedEvents">—</div><div class="label">Pending</div></div>
+            <div class="stat-card"><div class="value" id="totalEvents">—</div><div class="label">Jami</div></div>
+            <div class="stat-card"><div class="value" id="todayEvents">—</div><div class="label">Bugun</div></div>
+            <div class="stat-card"><div class="value" id="syncedEvents">—</div><div class="label">Yuborilgan</div></div>
+            <div class="stat-card danger"><div class="value" id="unsyncedEvents">—</div><div class="label">Kutilmoqda</div></div>
         </div>
 
         <div class="card">
-            <h3>Cry Type Distribution</h3>
+            <h3>Yig'i turi taqsimoti</h3>
             <div class="chart-container"><canvas id="distributionChart"></canvas></div>
         </div>
         <div class="card">
-            <h3>Hourly Activity (Last 24h)</h3>
+            <h3>Soatlik faollik (24 soat)</h3>
             <div class="chart-container"><canvas id="hourlyChart"></canvas></div>
         </div>
     </div>
 
-    <!-- ═══ PAGE: Analytics ═══ -->
+    <!-- ═══ SAHIFA: Tahlil ═══ -->
     <div class="page" id="page-analytics">
-        <div class="card"><h3>Daily Trend (Last 30 Days)</h3><div class="chart-container"><canvas id="dailyChart"></canvas></div></div>
-        <div class="card"><h3>Daily Breakdown by Type (7 Days)</h3><div class="chart-container"><canvas id="dailyTypeChart"></canvas></div></div>
+        <div class="card"><h3>Kunlik trend (30 kun)</h3><div class="chart-container"><canvas id="dailyChart"></canvas></div></div>
+        <div class="card"><h3>Kunlik turi bo'yicha (7 kun)</h3><div class="chart-container"><canvas id="dailyTypeChart"></canvas></div></div>
     </div>
 
-    <!-- ═══ PAGE: Events ═══ -->
+    <!-- ═══ SAHIFA: Hodisalar ═══ -->
     <div class="page" id="page-events">
         <div class="card">
-            <h3>Event Log</h3>
+            <h3>Hodisalar jurnali</h3>
             <div class="filter-row">
-                <button class="filter-btn active" onclick="filterEvents(null,this)">All</button>
-                <button class="filter-btn" onclick="filterEvents('hungry',this)">Hungry</button>
-                <button class="filter-btn" onclick="filterEvents('scared',this)">Scared</button>
-                <button class="filter-btn" onclick="filterEvents('discomfort',this)">Discomfort</button>
-                <button class="filter-btn" onclick="filterEvents('belly_pain',this)">Belly Pain</button>
+                <button class="filter-btn active" onclick="filterEvents(null,this)">Barchasi</button>
+                <button class="filter-btn" onclick="filterEvents('hungry',this)">Qorni och</button>
+                <button class="filter-btn" onclick="filterEvents('scared',this)">Qo'rqgan</button>
+                <button class="filter-btn" onclick="filterEvents('discomfort',this)">Noqulaylik</button>
+                <button class="filter-btn" onclick="filterEvents('belly_pain',this)">Qorni og'riq</button>
             </div>
             <div style="overflow-x:auto;">
                 <table class="events-table">
-                    <thead><tr><th>ID</th><th>Time</th><th>Type</th><th>Conf.</th><th>Sync</th></tr></thead>
-                    <tbody id="eventsBody"><tr><td colspan="5" style="text-align:center;color:var(--text2);">Loading...</td></tr></tbody>
+                    <thead><tr><th>ID</th><th>Vaqt</th><th>Turi</th><th>Aniqlik</th><th>Holat</th></tr></thead>
+                    <tbody id="eventsBody"><tr><td colspan="5" style="text-align:center;color:var(--text2);">Yuklanmoqda...</td></tr></tbody>
                 </table>
             </div>
             <div class="pagination">
                 <span id="eventsPagination"></span>
                 <div style="display:flex;gap:8px;">
-                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="prevBtn" onclick="changePage(-1)" disabled>Prev</button>
-                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="nextBtn" onclick="changePage(1)">Next</button>
+                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="prevBtn" onclick="changePage(-1)" disabled>Oldingi</button>
+                    <button class="btn btn-outline" style="width:auto;padding:8px 16px;" id="nextBtn" onclick="changePage(1)">Keyingi</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ═══ PAGE: System ═══ -->
+    <!-- ═══ SAHIFA: Tizim ═══ -->
     <div class="page" id="page-system">
         <div class="card">
-            <h3>Model Performance</h3>
+            <h3>Model samaradorligi</h3>
             <div id="modelInfo"></div>
             <div style="margin-top:14px;">
-                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Test Accuracy</span><span id="trainAcc">—</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Test aniqligi</span><span id="trainAcc">—</span></div>
                 <div class="accuracy-bar"><div class="accuracy-fill" id="trainAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
             </div>
             <div style="margin-top:10px;">
-                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Avg Inference</span><span id="valAcc">—</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>O'rtacha bashorat vaqti</span><span id="valAcc">—</span></div>
                 <div class="accuracy-bar"><div class="accuracy-fill" id="valAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent3),var(--accent4));"></div></div>
             </div>
         </div>
         <div class="card" id="modelSwitchCard">
-            <h3>Active Model</h3>
+            <h3>Faol model</h3>
             <div class="model-toggle" id="modelToggle">
-                <button data-m="3cls">3-class</button>
-                <button data-m="5cls">5-class</button>
+                <button data-m="3cls">3-sinf</button>
+                <button data-m="5cls">5-sinf</button>
             </div>
-            <div class="model-toggle-sub" id="modelToggleSub">hungry / no_cry / other_cry</div>
+            <div class="model-toggle-sub" id="modelToggleSub">qorni och / yig'lamayapti / boshqa yig'i</div>
         </div>
         <div class="card">
-            <h3>Speaker</h3>
+            <h3>Dinamik</h3>
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-                <span style="font-size:0.8rem;color:var(--text2);width:50px">Volume</span>
+                <span style="font-size:0.8rem;color:var(--text2);width:50px">Ovoz</span>
                 <input type="range" id="volSlider" min="0" max="100" value="100" style="flex:1;accent-color:var(--accent)">
                 <span id="volLabel" style="font-size:0.8rem;width:35px;text-align:right">100%</span>
             </div>
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="lullabyPlay()">Play Lullaby</button>
-                <button class="btn btn-danger" onclick="lullabyStop()">Stop Lullaby</button>
+                <button class="btn btn-primary" onclick="lullabyPlay()">Alla qo'yish</button>
+                <button class="btn btn-danger" onclick="lullabyStop()">Allani to'xtatish</button>
             </div>
         </div>
         <div class="card">
-            <h3>Controls</h3>
+            <h3>Boshqaruv</h3>
             <div class="btn-group">
-                <button class="btn btn-success" onclick="testTelegram()">Test Telegram</button>
-                <button class="btn btn-danger" onclick="runSimulation()">Run Simulation</button>
-                <button class="btn btn-outline" onclick="refreshAll()">Refresh Data</button>
+                <button class="btn btn-success" onclick="testTelegram()">Telegram test</button>
+                <button class="btn btn-danger" onclick="runSimulation()">Simulyatsiya</button>
+                <button class="btn btn-outline" onclick="refreshAll()">Yangilash</button>
             </div>
             <div class="sim-result" id="simResult"></div>
         </div>
-        <div class="card"><h3>System Config</h3><div id="settingsInfo" style="font-size:0.85rem;color:var(--text2);"></div></div>
+        <div class="card"><h3>Tizim sozlamalari</h3><div id="settingsInfo" style="font-size:0.85rem;color:var(--text2);"></div></div>
     </div>
 </div>
 
 <div class="bottom-nav">
     <div class="nav-item active" onclick="switchPage('overview',this)">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Overview</span>
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Umumiy</span>
     </div>
     <div class="nav-item" onclick="switchPage('analytics',this)">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Analytics</span>
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Tahlil</span>
     </div>
     <div class="nav-item" onclick="switchPage('events',this)">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Events</span>
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Hodisalar</span>
     </div>
     <div class="nav-item" onclick="switchPage('system',this)">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>System</span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Tizim</span>
     </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const COLORS={hungry:'#fdcb6e',scared:'#a29bfe',discomfort:'#fd79a8',belly_pain:'#ff7675',test:'#00cec9'};
-const CRY_EMOJI={hungry:'🍼',scared:'😨',discomfort:'😣',belly_pain:'🤢',test:'🧪'};
+const COLORS={hungry:'#fdcb6e',scared:'#a29bfe',discomfort:'#fd79a8',belly_pain:'#ff7675',test:'#00cec9',no_cry:'#55efc4',other_cry:'#a29bfe',pain:'#ff7675',tired:'#fdcb6e',burping:'#00cec9'};
+const CRY_EMOJI={hungry:'🍼',scared:'😨',discomfort:'😣',belly_pain:'🤢',test:'🧪',no_cry:'🔇',other_cry:'😢',pain:'🤕',tired:'😴',burping:'🫧'};
+const CRY_UZ={hungry:'Qorni och',scared:"Qo'rqgan",discomfort:'Noqulaylik',belly_pain:"Qorni og'riyapti",no_cry:"Yig'lamayapti",test:'Test',tired:'Charchagan',burping:'Kekirish',other_cry:"Boshqa yig'i",pain:"Og'riq"};
 
 let charts={};
 let currentFilter=null, currentPage=0;
@@ -278,10 +279,9 @@ async function loadLastDetection(){
     card.style.display='block';
 
     document.getElementById('ldIcon').textContent = CRY_EMOJI[ld.cry_type]||'❓';
-    document.getElementById('ldType').textContent = ld.cry_type;
+    document.getElementById('ldType').textContent = CRY_UZ[ld.cry_type]||ld.cry_type;
     document.getElementById('ldTime').textContent = ld.timestamp;
 
-    // Sort by confidence descending
     const sorted = Object.entries(probs).sort((a,b)=>b[1]-a[1]);
     const maxProb = sorted.length ? sorted[0][1] : 0;
 
@@ -290,9 +290,10 @@ async function loadLastDetection(){
         const pct = Math.round(prob*100);
         const color = COLORS[label]||'#636e72';
         const isWinner = label===ld.cry_type;
+        const uzLabel = CRY_UZ[label]||label;
         return `
             <div class="ld-bar-row">
-                <div class="ld-bar-label">${CRY_EMOJI[label]||'❓'} ${label}</div>
+                <div class="ld-bar-label">${CRY_EMOJI[label]||'❓'} ${uzLabel}</div>
                 <div class="ld-bar-track">
                     <div class="ld-bar-fill ${isWinner?'ld-bar-winner':''}"
                          style="width:${pct}%;background:${isWinner?color:color+'60'};color:${isWinner?'#fff':'var(--text2)'}"
@@ -302,7 +303,6 @@ async function loadLastDetection(){
             </div>`;
     }).join('');
 
-    // Animate bars in
     setTimeout(()=>{
         barsEl.querySelectorAll('.ld-bar-fill').forEach(el=>{
             el.style.transition='width 0.8s ease';
@@ -320,10 +320,10 @@ async function loadStats(){
     document.getElementById('syncedEvents').textContent=s.synced;
     document.getElementById('unsyncedEvents').textContent=s.unsynced;
 
-    const dL=data.distribution.map(d=>d.cry_type),dD=data.distribution.map(d=>d.count);
+    const dL=data.distribution.map(d=>CRY_UZ[d.cry_type]||d.cry_type),dD=data.distribution.map(d=>d.count);
     if(charts.dist)charts.dist.destroy();
     charts.dist=new Chart(document.getElementById('distributionChart'),{
-        type:'doughnut',data:{labels:dL,datasets:[{data:dD,backgroundColor:dL.map(l=>COLORS[l]||'#636e72'),borderWidth:0}]},
+        type:'doughnut',data:{labels:dL,datasets:[{data:dD,backgroundColor:data.distribution.map(d=>COLORS[d.cry_type]||'#636e72'),borderWidth:0}]},
         options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#b2bec3',padding:14,font:{size:12}}}}}
     });
 
@@ -347,7 +347,7 @@ async function loadAnalytics(){
     });
 
     const days=[...new Set(data.daily_by_type.map(d=>d.day))].sort(),types=[...new Set(data.daily_by_type.map(d=>d.cry_type))];
-    const ds=types.map(t=>({label:t,data:days.map(day=>{const m=data.daily_by_type.find(d=>d.day===day&&d.cry_type===t);return m?m.count:0}),backgroundColor:COLORS[t]||'#636e72',borderRadius:3}));
+    const ds=types.map(t=>({label:CRY_UZ[t]||t,data:days.map(day=>{const m=data.daily_by_type.find(d=>d.day===day&&d.cry_type===t);return m?m.count:0}),backgroundColor:COLORS[t]||'#636e72',borderRadius:3}));
     if(charts.dailyType)charts.dailyType.destroy();
     charts.dailyType=new Chart(document.getElementById('dailyTypeChart'),{
         type:'bar',data:{labels:days,datasets:ds},
@@ -363,13 +363,14 @@ async function loadEvents(){
     const data=await api('/api/events?'+params);
     const tbody=document.getElementById('eventsBody');
     if(!data.events.length){
-        tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--text2);">No events</td></tr>';
+        tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--text2);">Hodisalar yo\'q</td></tr>';
     }else{
         tbody.innerHTML=data.events.map(e=>{
             const conf=e.confidence||0;
             const pct=Math.round(conf*100);
             const cc=conf>=0.8?'color:#00b894':conf>=0.5?'color:#fdcb6e':'color:#d63031';
-            return`<tr><td>#${e.id}</td><td>${e.timestamp}</td><td><span class="badge badge-${e.cry_type}">${e.cry_type}</span></td><td style="${cc};font-weight:600">${pct}%</td><td><span class="badge ${e.synced?'badge-synced':'badge-pending'}">${e.synced?'Synced':'Pending'}</span></td></tr>`;
+            const uzType=CRY_UZ[e.cry_type]||e.cry_type;
+            return`<tr><td>#${e.id}</td><td>${e.timestamp}</td><td><span class="badge badge-${e.cry_type}">${uzType}</span></td><td style="${cc};font-weight:600">${pct}%</td><td><span class="badge ${e.synced?'badge-synced':'badge-pending'}">${e.synced?'Yuborilgan':'Kutilmoqda'}</span></td></tr>`;
         }).join('');
     }
     const total=data.total,pages=Math.ceil(total/PAGE_SIZE);
@@ -384,31 +385,33 @@ function changePage(d){currentPage+=d;loadEvents()}
 
 async function loadModelInfo(){
     const m=await api('/api/model-info');
-    const items=[['Active Model',m.active_model],['Model Size',m.yamnet_head_size_mb?(m.yamnet_base_size_mb+' + '+m.yamnet_head_size_mb+' MB'):(m.tflite_size_mb?m.tflite_size_mb+' MB':'N/A')],['Embedding',m.embedding_dim?m.embedding_dim+'-dim':'N/A'],['Features',m.feature_type],['Sample Rate',m.sample_rate+' Hz'],['Duration',m.duration_seconds+'s'],['Threshold',m.confidence_threshold],['Inference',m.avg_inference_ms+'ms'],['Classes','<div class="cls-badges">'+m.classes.map(c=>`<span class="cls-badge cls-badge-${c}">${c.replace('_',' ')}</span>`).join('')+'</div>']];
+    const items=[['Faol model',m.active_model],['Model hajmi',m.yamnet_head_size_mb?(m.yamnet_base_size_mb+' + '+m.yamnet_head_size_mb+' MB'):(m.tflite_size_mb?m.tflite_size_mb+' MB':'N/A')],['Embedding',m.embedding_dim?m.embedding_dim+'-dim':'N/A'],['Xususiyatlar',m.feature_type],['Namuna tezligi',m.sample_rate+' Hz'],['Davomiylik',m.duration_seconds+'s'],['Chegara',m.confidence_threshold],['Bashorat vaqti',m.avg_inference_ms+'ms'],['Sinflar','<div class="cls-badges">'+m.classes.map(c=>`<span class="cls-badge cls-badge-${c}">${(CRY_UZ[c]||c)}</span>`).join('')+'</div>']];
     document.getElementById('modelInfo').innerHTML=items.map(([k,v])=>`<div class="model-item"><span class="key">${k}</span><span class="val">${v}</span></div>`).join('');
     document.getElementById('trainAcc').textContent=m.test_accuracy+'%';document.getElementById('valAcc').textContent=(m.avg_inference_ms||'—')+'ms';
     setTimeout(()=>{document.getElementById('trainAccBar').style.width=m.test_accuracy+'%';document.getElementById('valAccBar').style.width=Math.min(100,m.avg_inference_ms)+'%'},200);
 }
 async function loadSettings(){
     const s=await api('/api/settings');
-    document.getElementById('settingsInfo').innerHTML=`<div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;"><div>Sample Rate: <strong>${s.sample_rate} Hz</strong></div><div>Duration: <strong>${s.duration}s</strong></div><div>Channels: <strong>${s.channels}</strong></div><div>Threshold: <strong>${s.threshold}</strong></div><div>Telegram: <strong>${s.telegram_configured?'Configured':'Not Set'}</strong></div><div>Lullabies: <strong>${s.lullabies_count} files</strong></div></div>`;
+    document.getElementById('settingsInfo').innerHTML=`<div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;"><div>Namuna tezligi: <strong>${s.sample_rate} Hz</strong></div><div>Davomiylik: <strong>${s.duration}s</strong></div><div>Kanallar: <strong>${s.channels}</strong></div><div>Chegara: <strong>${s.threshold}</strong></div><div>Telegram: <strong>${s.telegram_configured?'Sozlangan':'Sozlanmagan'}</strong></div><div>Allalar: <strong>${s.lullabies_count} ta fayl</strong></div></div>`;
 }
 
 // ── Controls ─────────────────────────────────────────────────────────────
 
-async function playLullaby(){toast('Playing lullaby...');const r=await api('/api/play-lullaby',{method:'POST'});toast(r.message||r.status)}
-async function testTelegram(){toast('Sending test alert...');const r=await api('/api/test-telegram',{method:'POST'});toast(r.status==='ok'?'Telegram alert sent!':'Failed');loadStats();loadEvents()}
+async function playLullaby(){toast('Alla qo\'yilmoqda...');const r=await api('/api/play-lullaby',{method:'POST'});toast(r.message||r.status)}
+async function testTelegram(){toast('Test xabarnoma yuborilmoqda...');const r=await api('/api/test-telegram',{method:'POST'});toast(r.status==='ok'?'Telegram xabarnoma yuborildi!':'Muvaffaqiyatsiz');loadStats();loadEvents()}
 async function runSimulation(){
-    toast('Running simulation...');
+    toast('Simulyatsiya ishga tushirilmoqda...');
     const r=await api('/api/simulate',{method:'POST'});
     const el=document.getElementById('simResult');
     if(r.status==='ok'){
         const pct=r.confidence?Math.round(r.confidence*100):'?';
-        el.innerHTML=`<strong>Result</strong><br>File: ${r.file}<br>Actual: <span class="badge badge-${r.actual_category}">${r.actual_category}</span> Predicted: <span class="badge badge-${r.predicted}">${r.predicted}</span> Confidence: <strong>${pct}%</strong>`;
-        el.style.display='block';toast('Simulation complete!');loadStats();loadEvents();loadLastDetection();
-    }else{toast('Failed: '+r.message)}
+        const actualUz=CRY_UZ[r.actual_category]||r.actual_category;
+        const predUz=CRY_UZ[r.predicted]||r.predicted;
+        el.innerHTML=`<strong>Natija</strong><br>Fayl: ${r.file}<br>Haqiqiy: <span class="badge badge-${r.actual_category}">${actualUz}</span> Bashorat: <span class="badge badge-${r.predicted}">${predUz}</span> Aniqlik: <strong>${pct}%</strong>`;
+        el.style.display='block';toast('Simulyatsiya tugadi!');loadStats();loadEvents();loadLastDetection();
+    }else{toast('Xato: '+r.message)}
 }
-function refreshAll(){loadStats();loadEvents();loadModelInfo();loadSettings();loadAnalytics();loadLastDetection();toast('Refreshed')}
+function refreshAll(){loadStats();loadEvents();loadModelInfo();loadSettings();loadAnalytics();loadLastDetection();toast('Yangilandi')}
 
 setInterval(()=>{loadStats();loadLastDetection()},30000);
 
@@ -426,8 +429,8 @@ if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.r
   const buttons = document.querySelectorAll('#modelToggle button');
   const sub = document.getElementById('modelToggleSub');
   const DESCR = {
-    '3cls': '<span class="cls-badge cls-badge-hungry">hungry</span><span class="cls-badge cls-badge-no_cry">no cry</span><span class="cls-badge cls-badge-other_cry">other cry</span>',
-    '5cls': '<span class="cls-badge cls-badge-hungry">hungry</span><span class="cls-badge cls-badge-no_cry">no cry</span><span class="cls-badge cls-badge-pain">pain</span><span class="cls-badge cls-badge-tired">tired</span><span class="cls-badge cls-badge-burping">burping</span>'
+    '3cls': '<span class="cls-badge cls-badge-hungry">Qorni och</span><span class="cls-badge cls-badge-no_cry">Yig\'lamayapti</span><span class="cls-badge cls-badge-other_cry">Boshqa yig\'i</span>',
+    '5cls': '<span class="cls-badge cls-badge-hungry">Qorni och</span><span class="cls-badge cls-badge-no_cry">Yig\'lamayapti</span><span class="cls-badge cls-badge-pain">Og\'riq</span><span class="cls-badge cls-badge-tired">Charchagan</span><span class="cls-badge cls-badge-burping">Kekirish</span>'
   };
   function refresh(){
     fetch('/api/active').then(r=>r.json()).then(d=>{
@@ -443,8 +446,8 @@ if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.r
 })();
 
 // Speaker controls
-async function lullabyPlay(){toast('Playing...');await api('/api/lullaby/play',{method:'POST'})}
-async function lullabyStop(){toast('Stopping...');await api('/api/lullaby/stop',{method:'POST'})}
+async function lullabyPlay(){toast('Ijro etilmoqda...');await api('/api/lullaby/play',{method:'POST'})}
+async function lullabyStop(){toast('To\'xtatilmoqda...');await api('/api/lullaby/stop',{method:'POST'})}
 (function(){
   var sl=document.getElementById('volSlider'),lb=document.getElementById('volLabel');
   if(!sl)return;

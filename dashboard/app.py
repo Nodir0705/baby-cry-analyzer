@@ -301,7 +301,7 @@ def api_simulate():
         mel_spec_db = librosa.power_to_db(mel_spec, ref=np.max)
 
         cry_type, confidence, all_probs = predict(mel_spec_db)
-        send_alert(cry_type, confidence=confidence, all_probs=all_probs)
+        send_alert(cry_type, confidence=confidence, all_probs=all_probs, audio_path=test_file)
 
         # sim-class-mapping-v1
         _state_f = os.path.join(settings.BASE_DIR, "storage", "active_model.txt")
@@ -358,10 +358,24 @@ def api_switch(which):
 # ── Lullaby & Speaker Controls ──────────────────────────────────────────────
 import subprocess as _sp
 
+def _find_usb_card():
+    """Auto-detect USB speaker card number."""
+    try:
+        out = _sp.check_output(["aplay", "-l"], text=True)
+        for line in out.splitlines():
+            if "USB Audio" in line:
+                return line.split(":")[0].replace("card ", "").strip()
+    except Exception:
+        pass
+    return None 
+
 @app.route("/api/volume", methods=["GET"])
 def api_volume():
     try:
-        out = _sp.check_output(["amixer", "-c", "3", "sget", "PCM"], text=True)
+        card = _find_usb_card()
+        if not card:
+            return jsonify({"error": "USB speaker not found"}), 500
+        out = _sp.check_output(["amixer", "-c", card, "sget", "PCM"], text=True)
         import re
         m = re.search(r'\[(\d+)%\]', out)
         return jsonify({"volume": int(m.group(1)) if m else 100})
@@ -372,7 +386,10 @@ def api_volume():
 def api_set_volume(level):
     level = max(0, min(100, level))
     try:
-        _sp.run(["amixer", "-c", "3", "sset", "PCM", f"{level}%"], check=True, capture_output=True)
+        card = _find_usb_card()
+        if not card:
+            return jsonify({"error": "USB speaker not found"}), 500
+        _sp.run(["amixer", "-c", card, "sset", "PCM", f"{level}%"], check=True, capture_output=True)
         return jsonify({"volume": level, "ok": True})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

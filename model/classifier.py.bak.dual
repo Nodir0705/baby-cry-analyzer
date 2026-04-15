@@ -1,0 +1,164 @@
+import numpy as np
+import tflite_runtime.interpreter as tflite
+import os
+import json
+import joblib
+import librosa
+from config import settings
+
+
+class Classifier:
+    def __init__(self):
+        model_dir = os.path.join(settings.BASE_DIR, 'model')
+
+        # NEW: 3-class CNN (no_cry / hungry / other_cry), trained on expanded dataset
+        self.v3cls_path = os.path.join(model_dir, 'cry_model_v3cls.tflite')
+        self.v3cls_le_path = os.path.join(model_dir, 'label_encoder_3cls.joblib')
+        self.v3cls_meta_path = os.path.join(model_dir, 'meta_final.json')
+
+        # Legacy fallbacks
+        self.le_path = os.path.join(model_dir, 'label_encoder.joblib')
+        self.yamnet_head_path = os.path.join(model_dir, 'yamnet_head.tflite')
+        self.old_cnn_path = os.path.join(model_dir, 'cry_model.tflite')
+
+        if all(os.path.exists(p) for p in [self.v3cls_path, self.v3cls_le_path, self.v3cls_meta_path]):
+            print("Loading 3-class CNN (v3cls)...")
+            self.interpreter = tflite.Interpreter(model_path=self.v3cls_path)
+            self.interpreter.allocate_tensors()
+            self.input_details = self.interpreter.get_input_details()
+            self.output_details = self.interpreter.get_output_details()
+            self.le = joblib.load(self.v3cls_le_path)
+            with open(self.v3cls_meta_path) as f:
+                self.meta = json.load(f)
+            self.feat_mean = float(self.meta['feature_mean'])
+            self.feat_std = float(self.meta['feature_std'])
+            self.mode = 'v3cls'
+            print(f"  classes: {list(self.le.classes_)}")
+        elif os.path.exists(self.yamnet_head_path) and os.path.exists(self.le_path):
+            print("Loading YAMNet + classification head...")
+            self._init_yamnet()
+            self.head = tflite.Interpreter(model_path=self.yamnet_head_path)
+            self.head.allocate_tensors()
+            self.head_input = self.head.get_input_details()
+            self.head_output = self.head.get_output_details()
+            self.le = joblib.load(self.le_path)
+            self.mode = 'yamnet'
+        elif os.path.exists(self.old_cnn_path) and os.path.exists(self.le_path):
+            print("Loading TFLite CNN model (legacy)...")
+            self.interpreter = tflite.Interpreter(model_path=self.old_cnn_path)
+            self.interpreter.allocate_tensors()
+            self.input_details = self.interpreter.get_input_details()
+            self.output_details = self.interpreter.get_output_details()
+            self.le = joblib.load(self.le_path)
+            self.mode = 'tflite'
+        else:
+            print("No models found!")
+            self.mode = None
+
+    def _init_yamnet(self):
+        """Load YAMNet TFLite model for embedding extraction."""
+        yamnet_path = os.path.join(settings.BASE_DIR, 'model', 'yamnet.tflite')
+        if not os.path.exists(yamnet_path):
+            print("Downloading YAMNet TFLite model...")
+            import urllib.request
+            url = "https://storage.googleapis.com/tfhub-lite-models/google/lite-model/yamnet/tflite/1.tflite"
+            urllib.request.urlretrieve(url, yamnet_path)
+            print(f"Saved to {yamnet_path}")
+
+        self.yamnet = tflite.Interpreter(model_path=yamnet_path)
+        self.yamnet.allocate_tensors()
+        self.yamnet_input = self.yamnet.get_input_details()
+        self.yamnet_output = self.yamnet.get_output_details()
+
+    def _yamnet_embedding(self, audio_data):
+        """Extract 3072-dim multi-pool embedding from raw audio using YAMNet TFLite."""
+        audio_16k = librosa.resample(
+            audio_data.astype(np.float32),
+            orig_sr=settings.SAMPLE_RATE,
+            target_sr=16000
+        )
+        min_len = int(16000 * 0.96)
+        if len(audio_16k) < min_len:
+            audio_16k = np.pad(audio_16k, (0, min_len - len(audio_16k)))
+
+        waveform = audio_16k.astype(np.float32)
+        self.yamnet.resize_tensor_input(self.yamnet_input[0]['index'], waveform.shape)
+        self.yamnet.allocate_tensors()
+
+        self.yamnet.set_tensor(self.yamnet_input[0]['index'], waveform)
+        self.yamnet.invoke()
+
+        embeddings = self.yamnet.get_tensor(self.yamnet_output[1]['index'])
+        avg_emb = np.mean(embeddings, axis=0)
+        max_emb = np.max(embeddings, axis=0)
+        std_emb = np.std(embeddings, axis=0)
+        return np.concatenate([avg_emb, max_emb, std_emb], axis=0)
+
+    def _v3cls_features(self, audio_data):
+        """Compute standardized mel-spec matching training pipeline."""
+        sr = settings.SAMPLE_RATE
+        target_len = int(sr * settings.DURATION)  # 2 sec at 22050 Hz
+        y = audio_data.astype(np.float32)
+        if len(y) < target_len:
+            y = np.pad(y, (0, target_len - len(y)))
+        else:
+            y = y[:target_len]
+        mel = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=64)
+        mel_db = librosa.power_to_db(mel, ref=np.max).astype(np.float32)
+        # Standardize with training mean/std
+        x = (mel_db - self.feat_mean) / self.feat_std
+        # Shape (1, 64, 87, 1)
+        return x[np.newaxis, ..., np.newaxis].astype(np.float32)
+
+    def predict(self, features):
+        """
+        Returns (top_label, top_confidence, all_probabilities_dict).
+        `features` = raw audio numpy array (all modes take raw audio now).
+        """
+        if self.mode == 'v3cls':
+            x = self._v3cls_features(features)
+            # Input tensor might be fixed-shape — no resize needed
+            self.interpreter.set_tensor(self.input_details[0]['index'], x)
+            self.interpreter.invoke()
+            output = self.interpreter.get_tensor(self.output_details[0]['index'])[0]
+            all_probs = {}
+            for i, prob in enumerate(output):
+                label = self.le.inverse_transform([i])[0]
+                all_probs[label] = round(float(prob), 4)
+            idx = int(np.argmax(output))
+            return str(self.le.inverse_transform([idx])[0]), float(output[idx]), all_probs
+
+        elif self.mode == 'yamnet':
+            embedding = self._yamnet_embedding(features)
+            input_data = np.expand_dims(embedding, axis=0).astype(np.float32)
+            self.head.set_tensor(self.head_input[0]['index'], input_data)
+            self.head.invoke()
+            output_data = self.head.get_tensor(self.head_output[0]['index'])[0]
+            all_probs = {}
+            for i, prob in enumerate(output_data):
+                label = self.le.inverse_transform([i])[0]
+                all_probs[label] = round(float(prob), 4)
+            idx = int(np.argmax(output_data))
+            return self.le.inverse_transform([idx])[0], float(output_data[idx]), all_probs
+
+        elif self.mode == 'tflite':
+            input_data = np.expand_dims(features, axis=0).astype(np.float32)
+            input_data = np.expand_dims(input_data, axis=-1)
+            self.interpreter.set_tensor(self.input_details[0]['index'], input_data)
+            self.interpreter.invoke()
+            output_data = self.interpreter.get_tensor(self.output_details[0]['index'])[0]
+            all_probs = {}
+            for i, prob in enumerate(output_data):
+                label = self.le.inverse_transform([i])[0]
+                all_probs[label] = round(float(prob), 4)
+            idx = int(np.argmax(output_data))
+            return self.le.inverse_transform([idx])[0], float(output_data[idx]), all_probs
+
+        return "unknown", 0.0, {}
+
+
+classifier = Classifier()
+
+
+def predict(features):
+    return classifier.predict(features)

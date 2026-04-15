@@ -30,11 +30,8 @@ logger = logging.getLogger(__name__)
 
 def get_webapp_url():
     """Get tunnel URL from ngrok local API or static domain setting."""
-    # Use static domain if configured
     if app_settings.NGROK_DOMAIN:
         return f"https://{app_settings.NGROK_DOMAIN}"
-
-    # Otherwise read from ngrok local API
     try:
         req = urllib.request.urlopen("http://localhost:4040/api/tunnels", timeout=5)
         data = json.loads(req.read().decode())
@@ -52,40 +49,69 @@ def get_db():
     return conn
 
 
+# ── Uzbek translations ───────────────────────────────────────────────────────
+
+CRY_EMOJI = {
+    "hungry": "🍼",
+    "scared": "😨",
+    "discomfort": "😣",
+    "belly_pain": "🤢",
+    "no_cry": "🔇",
+    "test": "🧪",
+    "tired": "😴",
+    "burping": "🫧",
+    "other_cry": "😢",
+    "pain": "🤕",
+}
+
+CRY_UZ = {
+    "hungry": "Qorni och",
+    "scared": "Qo'rqgan",
+    "discomfort": "Noqulaylik",
+    "belly_pain": "Qorni og'riyapti",
+    "no_cry": "Yig'lamayapti",
+    "test": "Test",
+    "tired": "Charchagan",
+    "burping": "Kekirish",
+    "other_cry": "Boshqa yig'i",
+    "pain": "Og'riq",
+}
+
+
 # ── Commands ──────────────────────────────────────────────────────────────────
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [InlineKeyboardButton("📊 Open Dashboard", web_app=WebAppInfo(url=WEBAPP_URL))],
+        [InlineKeyboardButton("📊 Boshqaruv paneli", web_app=WebAppInfo(url=WEBAPP_URL))],
         [
-            InlineKeyboardButton("📈 Quick Stats", callback_data="stats"),
-            InlineKeyboardButton("📋 Recent Events", callback_data="recent"),
+            InlineKeyboardButton("📈 Statistika", callback_data="stats"),
+            InlineKeyboardButton("📋 So'nggi hodisalar", callback_data="recent"),
         ],
         [
-            InlineKeyboardButton("🧠 Model Info", callback_data="model"),
-            InlineKeyboardButton("🎵 Play Lullaby", callback_data="lullaby"),
+            InlineKeyboardButton("🧠 Model haqida", callback_data="model"),
+            InlineKeyboardButton("🎵 Alla qo'yish", callback_data="lullaby"),
         ],
         [
-            InlineKeyboardButton("🧪 Run Simulation", callback_data="simulate"),
+            InlineKeyboardButton("🧪 Simulyatsiya", callback_data="simulate"),
         ],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        "👶 *Baby Cry Analyzer*\n\n"
-        "Welcome! I monitor your baby's crying in real-time, "
-        "classify the reason, and help soothe them automatically.\n\n"
-        "Tap *Open Dashboard* for the full web interface, "
-        "or use the quick actions below.",
+        "👶 *Chaqaloq Yig'lash Analizatori*\n\n"
+        "Xush kelibsiz! Men chaqaloqning yig'lashini real vaqtda kuzataman, "
+        "sababini aniqlayman va avtomatik tinchlantiraman.\n\n"
+        "*Boshqaruv paneli* ni bosib to'liq interfeyni oching, "
+        "yoki quyidagi tezkor amallardan foydalaning.",
         parse_mode="Markdown",
         reply_markup=reply_markup,
     )
 
 
 async def dashboard_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [[InlineKeyboardButton("📊 Open Dashboard", web_app=WebAppInfo(url=WEBAPP_URL))]]
+    keyboard = [[InlineKeyboardButton("📊 Boshqaruv paneli", web_app=WebAppInfo(url=WEBAPP_URL))]]
     await update.message.reply_text(
-        "Tap below to open the full dashboard:",
+        "To'liq boshqaruv panelini ochish uchun bosing:",
         reply_markup=InlineKeyboardMarkup(keyboard),
     )
 
@@ -102,16 +128,16 @@ async def recent_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "🤖 *Baby Cry Analyzer Bot*\n\n"
-        "*Commands:*\n"
-        "/start — Main menu with dashboard\n"
-        "/dashboard — Open web dashboard\n"
-        "/stats — Quick statistics\n"
-        "/recent — Last 10 events\n"
-        "/model — Model information\n"
-        "/simulate — Run a detection simulation\n"
-        "/lullaby — Play a lullaby\n"
-        "/help — Show this help\n",
+        "🤖 *Chaqaloq Yig'lash Analizatori Boti*\n\n"
+        "*Buyruqlar:*\n"
+        "/start — Asosiy menyu\n"
+        "/dashboard — Boshqaruv paneli\n"
+        "/stats — Tezkor statistika\n"
+        "/recent — So'nggi 10 ta hodisa\n"
+        "/model — Model ma'lumotlari\n"
+        "/simulate — Simulyatsiya ishga tushirish\n"
+        "/lullaby — Alla qo'yish\n"
+        "/help — Yordam ko'rsatish\n",
         parse_mode="Markdown",
     )
 
@@ -122,7 +148,7 @@ async def model_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def simulate_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = await update.message.reply_text("🧪 Running simulation...")
+    msg = await update.message.reply_text("🧪 Simulyatsiya ishga tushirilmoqda...")
     result = _run_simulation()
     await msg.edit_text(result, parse_mode="Markdown")
 
@@ -151,27 +177,27 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = _play_lullaby()
         await query.edit_message_text(text, parse_mode="Markdown")
     elif query.data == "simulate":
-        await query.edit_message_text("🧪 Running simulation...")
+        await query.edit_message_text("🧪 Simulyatsiya ishga tushirilmoqda...")
         result = _run_simulation()
         await query.edit_message_text(result, parse_mode="Markdown")
 
     # Add back button
-    keyboard = [[InlineKeyboardButton("◀️ Back to Menu", callback_data="menu")]]
+    keyboard = [[InlineKeyboardButton("◀️ Orqaga", callback_data="menu")]]
     if query.data == "menu":
         keyboard = [
-            [InlineKeyboardButton("📊 Open Dashboard", web_app=WebAppInfo(url=WEBAPP_URL))],
+            [InlineKeyboardButton("📊 Boshqaruv paneli", web_app=WebAppInfo(url=WEBAPP_URL))],
             [
-                InlineKeyboardButton("📈 Quick Stats", callback_data="stats"),
-                InlineKeyboardButton("📋 Recent Events", callback_data="recent"),
+                InlineKeyboardButton("📈 Statistika", callback_data="stats"),
+                InlineKeyboardButton("📋 So'nggi hodisalar", callback_data="recent"),
             ],
             [
-                InlineKeyboardButton("🧠 Model Info", callback_data="model"),
-                InlineKeyboardButton("🎵 Play Lullaby", callback_data="lullaby"),
+                InlineKeyboardButton("🧠 Model haqida", callback_data="model"),
+                InlineKeyboardButton("🎵 Alla qo'yish", callback_data="lullaby"),
             ],
-            [InlineKeyboardButton("🧪 Run Simulation", callback_data="simulate")],
+            [InlineKeyboardButton("🧪 Simulyatsiya", callback_data="simulate")],
         ]
         await query.edit_message_text(
-            "👶 *Baby Cry Analyzer*\n\nChoose an action:",
+            "👶 *Chaqaloq Yig'lash Analizatori*\n\nAmalni tanlang:",
             parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup(keyboard),
         )
@@ -186,14 +212,8 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ── Helper functions ──────────────────────────────────────────────────────────
 
-CRY_EMOJI = {
-    "hungry": "🍼",
-    "scared": "😨",
-    "discomfort": "😣",
-    "belly_pain": "🤢",
-    "no_cry": "🔇",
-    "test": "🧪",
-}
+def _escape_md(text):
+    return text.replace("_", "\\_")
 
 
 def _build_stats_text():
@@ -207,14 +227,15 @@ def _build_stats_text():
     ).fetchall()
     conn.close()
 
-    lines = ["📈 *Quick Statistics*\n"]
-    lines.append(f"Total events: *{total}*")
-    lines.append(f"Today: *{today}*\n")
-    lines.append("*Distribution:*")
+    lines = ["📈 *Tezkor Statistika*\n"]
+    lines.append(f"Jami hodisalar: *{total}*")
+    lines.append(f"Bugun: *{today}*\n")
+    lines.append("*Taqsimot:*")
     for row in dist:
         emoji = CRY_EMOJI.get(row["cry_type"], "❓")
+        uz = CRY_UZ.get(row["cry_type"], row["cry_type"])
         bar = "█" * min(row["cnt"], 20)
-        lines.append(f"{emoji} {row['cry_type']}: *{row['cnt']}* {bar}")
+        lines.append(f"{emoji} {_escape_md(uz)}: *{row['cnt']}* {bar}")
 
     return "\n".join(lines)
 
@@ -227,13 +248,14 @@ def _build_recent_text():
     conn.close()
 
     if not rows:
-        return "📋 *Recent Events*\n\nNo events recorded yet."
+        return "📋 *So'nggi Hodisalar*\n\nHali hodisa qayd etilmagan."
 
-    lines = ["📋 *Last 10 Events*\n"]
+    lines = ["📋 *So'nggi 10 ta Hodisa*\n"]
     for r in rows:
         emoji = CRY_EMOJI.get(r["cry_type"], "❓")
+        uz = CRY_UZ.get(r["cry_type"], r["cry_type"])
         sync = "✅" if r["synced"] else "⏳"
-        lines.append(f"{emoji} `{r['timestamp']}` — *{r['cry_type']}* {sync}")
+        lines.append(f"{emoji} `{r['timestamp']}` — *{_escape_md(uz)}* {sync}")
 
     return "\n".join(lines)
 
@@ -243,16 +265,16 @@ def _build_model_text():
     size = round(os.path.getsize(tflite_path) / 1e6, 2) if os.path.exists(tflite_path) else "N/A"
 
     return (
-        "🧠 *Model Information*\n\n"
-        f"*Active Model:* CNN (TFLite)\n"
-        f"*Size:* {size} MB\n"
-        f"*Input:* Mel Spectrogram (64 bands)\n"
-        f"*Shape:* (1, 64, 87, 1)\n"
-        f"*Sample Rate:* {app_settings.SAMPLE_RATE} Hz\n"
-        f"*Duration:* {app_settings.DURATION}s\n\n"
-        f"*Classes:*\n"
-        f"🍼 hungry | 😨 scared\n"
-        f"😣 discomfort | 🤢 belly\\_pain | 🔇 no\\_cry"
+        "🧠 *Model Ma'lumotlari*\n\n"
+        f"*Faol model:* CNN (TFLite)\n"
+        f"*Hajmi:* {size} MB\n"
+        f"*Kirish:* Mel Spektrogramma (64 diapazon)\n"
+        f"*Shakli:* (1, 64, 87, 1)\n"
+        f"*Namuna tezligi:* {app_settings.SAMPLE_RATE} Hz\n"
+        f"*Davomiyligi:* {app_settings.DURATION}s\n\n"
+        f"*Sinflar:*\n"
+        f"🍼 Qorni och | 😨 Qo'rqgan\n"
+        f"😣 Noqulaylik | 🤢 Qorni og'riyapti | 🔇 Yig'lamayapti"
     )
 
 
@@ -260,9 +282,9 @@ def _play_lullaby():
     try:
         from actions.lullaby_player import play_random_lullaby
         play_random_lullaby()
-        return "🎵 *Lullaby Started*\n\nPlaying a random lullaby to soothe the baby..."
+        return "🎵 *Alla boshlandi*\n\nChaqaloqni tinchlantirish uchun alla aytilmoqda..."
     except Exception as e:
-        return f"🎵 *Lullaby*\n\n⚠️ Playback error: {e}"
+        return f"🎵 *Alla*\n\n⚠️ Ijro xatosi: {e}"
 
 
 def _run_simulation():
@@ -278,13 +300,13 @@ def _run_simulation():
                       if os.path.isdir(os.path.join(dataset_base, d))]
 
         if not categories:
-            return "🧪 *Simulation Failed*\n\nNo dataset found."
+            return "🧪 *Simulyatsiya Muvaffaqiyatsiz*\n\nMa'lumotlar to'plami topilmadi."
 
         cat = random.choice(categories)
         cat_path = os.path.join(dataset_base, cat)
         files = [f for f in os.listdir(cat_path) if f.endswith(".wav")]
         if not files:
-            return f"🧪 *Simulation Failed*\n\nNo wav files in {cat}."
+            return f"🧪 *Simulyatsiya Muvaffaqiyatsiz*\n\n{cat} papkasida wav fayllar yo'q."
 
         test_file = os.path.join(cat_path, random.choice(files))
         y, sr = librosa.load(test_file, sr=app_settings.SAMPLE_RATE, duration=app_settings.DURATION)
@@ -297,20 +319,22 @@ def _run_simulation():
         cry_type = predict(mel_spec_db)
         send_alert(cry_type)
 
+        actual_uz = CRY_UZ.get(cat, cat)
+        pred_uz = CRY_UZ.get(cry_type, cry_type)
         actual_emoji = CRY_EMOJI.get(cat, "❓")
         pred_emoji = CRY_EMOJI.get(cry_type, "❓")
         match = "✅" if cat == cry_type else "❌"
 
         return (
-            f"🧪 *Simulation Result*\n\n"
-            f"📁 File: `{os.path.basename(test_file)[:30]}...`\n"
-            f"{actual_emoji} Actual: *{cat}*\n"
-            f"{pred_emoji} Predicted: *{cry_type}*\n"
-            f"Result: {match}\n\n"
-            f"📱 Telegram alert sent!"
+            f"🧪 *Simulyatsiya Natijasi*\n\n"
+            f"📁 Fayl: `{os.path.basename(test_file)[:30]}...`\n"
+            f"{actual_emoji} Haqiqiy: *{_escape_md(actual_uz)}*\n"
+            f"{pred_emoji} Bashorat: *{_escape_md(pred_uz)}*\n"
+            f"Natija: {match}\n\n"
+            f"📱 Telegram xabarnoma yuborildi!"
         )
     except Exception as e:
-        return f"🧪 *Simulation Failed*\n\n⚠️ Error: {e}"
+        return f"🧪 *Simulyatsiya Muvaffaqiyatsiz*\n\n⚠️ Xato: {e}"
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -318,7 +342,6 @@ def _run_simulation():
 def main():
     global WEBAPP_URL
 
-    # Get tunnel URL
     url = get_webapp_url()
     if url:
         WEBAPP_URL = url
@@ -328,10 +351,8 @@ def main():
         logger.info("Run: ~/.local/bin/ngrok http 5555")
         return
 
-    # Build app
     app = Application.builder().token(BOT_TOKEN).build()
 
-    # Register handlers
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("dashboard", dashboard_cmd))
     app.add_handler(CommandHandler("stats", stats_cmd))

@@ -42,7 +42,7 @@ def listen_and_predict(callback):
                 )
                 features = extract_features(audio_resampled)
                 if features is not None:
-                    callback(features)
+                    callback(features, audio_resampled)
             except Exception as e:
                 print(f"Processing error: {e}", flush=True)
 
