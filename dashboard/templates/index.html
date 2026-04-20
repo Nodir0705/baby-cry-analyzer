@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaqaloq Yig'lash Analizatori — Boshqaruv Paneli</title>
+    <title>Chaqaloq yig'lashini tahlil qiluvchi va avtomatik tinchlantirish uchun aqlli tizim</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <style>
         :root {
-            --bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;
+            --bg:#f7f9fc;--card:#fcfdfe;--border:#e6eaf0;
             --accent:#6c5ce7;--accent2:#00cec9;--accent3:#fd79a8;--accent4:#fdcb6e;
-            --text:#dfe6e9;--text2:#b2bec3;--success:#00b894;--danger:#d63031;
-            --nav-h:56px;--header-h:72px;
+            --text:#2d3436;--text2:#636e72;--success:#00b894;--danger:#d63031;
+            --nav-h:56px;--header-h:auto;
         }
         *{margin:0;padding:0;box-sizing:border-box}
         html,body{height:100%;overflow:hidden}
         body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
 
-        .header{background:linear-gradient(135deg,#6c5ce7,#a29bfe);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;height:var(--header-h)}
-        .header h1{font-size:1.3rem;font-weight:700}
-        .header .subtitle{font-size:0.8rem;opacity:0.85;margin-top:2px}
+        .header{background:linear-gradient(135deg,#6c5ce7,#a29bfe);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-shrink:0;min-height:var(--header-h)}
+        .header h1{font-size:0.92rem;font-weight:700;line-height:1.3;letter-spacing:0.1px;color:#fff}
+        .header .title-wrap{flex:1;min-width:0}
         .header .status-badge{background:rgba(255,255,255,0.2);padding:5px 14px;border-radius:20px;font-size:0.75rem;display:flex;align-items:center;gap:8px}
         .status-dot{width:8px;height:8px;border-radius:50%;background:#55efc4;animation:pulse 2s infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -32,11 +32,11 @@
         .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
         .nav-item.active{color:var(--accent)}.nav-item.active svg{stroke:var(--accent)}
 
-        .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:16px}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(16,24,40,0.04),0 2px 6px rgba(16,24,40,0.03)}
         .card h3{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:12px}
 
         .stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
-        .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+        .stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 2px rgba(16,24,40,0.04),0 2px 6px rgba(16,24,40,0.03)}
         .stat-card .value{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .stat-card .label{color:var(--text2);font-size:0.8rem;margin-top:2px}
         .stat-card.danger .value{background:linear-gradient(135deg,var(--danger),var(--accent3));-webkit-background-clip:text}
@@ -53,7 +53,7 @@
         .ld-bars{display:flex;flex-direction:column;gap:10px}
         .ld-bar-row{display:flex;align-items:center;gap:10px}
         .ld-bar-label{width:90px;font-size:0.8rem;color:var(--text2);text-transform:capitalize;display:flex;align-items:center;gap:6px}
-        .ld-bar-track{flex:1;height:28px;background:rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;position:relative}
+        .ld-bar-track{flex:1;height:28px;background:rgba(16,24,40,0.06);border-radius:8px;overflow:hidden;position:relative}
         .ld-bar-fill{height:100%;border-radius:8px;transition:width 0.8s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:0.8rem;font-weight:700;min-width:40px}
         .ld-bar-winner{box-shadow:0 0 12px rgba(108,92,231,0.4)}
         .ld-bar-pct{width:50px;text-align:right;font-size:0.9rem;font-weight:700}
@@ -89,10 +89,11 @@
 
         @media(min-width:600px){.stat-row{grid-template-columns:repeat(4,1fr)}}
     
-        .model-toggle{display:flex;gap:4px;background:rgba(0,0,0,0.25);padding:3px;border-radius:20px;margin-right:10px}
-        .model-toggle button{background:transparent;border:none;color:#fff;font:600 0.72rem 'Segoe UI',sans-serif;padding:5px 12px;border-radius:16px;cursor:pointer;opacity:0.6;transition:all 0.2s}
-        .model-toggle button.active{background:rgba(255,255,255,0.9);color:#6c5ce7;opacity:1}
-        .model-toggle button:hover:not(.active){opacity:0.9}
+        .model-toggle{display:flex;gap:6px;background:rgba(16,24,40,0.05);padding:5px;border-radius:14px;margin-bottom:10px;width:fit-content}
+        .model-toggle button{background:transparent;border:none;color:var(--text2);font:600 0.95rem 'Segoe UI',sans-serif;padding:11px 26px;border-radius:10px;cursor:pointer;transition:all 0.2s;min-width:96px;letter-spacing:0.2px}
+        .model-toggle button.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(108,92,231,0.25)}
+        .model-toggle button:hover:not(.active){background:rgba(16,24,40,0.04);color:var(--text)}
+        .model-toggle-sub{font-size:0.8rem;color:var(--text2);margin-top:4px}
     
         .cls-badges{display:flex;flex-wrap:wrap;gap:6px}
         .cls-badge{display:inline-block;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;letter-spacing:0.3px}
@@ -107,7 +108,7 @@
 <body>
 
 <div class="header">
-    <div><h1>Chaqaloq Yig'lash Analizatori</h1><div class="subtitle">AI Asosidagi Aniqlash va Tinchlantirish</div></div>
+    <div class="title-wrap"><h1>Chaqaloq yig'lashini tahlil qiluvchi va avtomatik tinchlantirish uchun aqlli tizim</h1></div>
     <div class="status-badge"><div class="status-dot"></div><span>Faol</span></div>
 </div>
 
@@ -179,18 +180,6 @@
 
     <!-- ═══ SAHIFA: Tizim ═══ -->
     <div class="page" id="page-system">
-        <div class="card">
-            <h3>Model samaradorligi</h3>
-            <div id="modelInfo"></div>
-            <div style="margin-top:14px;">
-                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Test aniqligi</span><span id="trainAcc">—</span></div>
-                <div class="accuracy-bar"><div class="accuracy-fill" id="trainAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
-            </div>
-            <div style="margin-top:10px;">
-                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>O'rtacha bashorat vaqti</span><span id="valAcc">—</span></div>
-                <div class="accuracy-bar"><div class="accuracy-fill" id="valAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent3),var(--accent4));"></div></div>
-            </div>
-        </div>
         <div class="card" id="modelSwitchCard">
             <h3>Faol model</h3>
             <div class="model-toggle" id="modelToggle">
@@ -220,7 +209,38 @@
             </div>
             <div class="sim-result" id="simResult"></div>
         </div>
-        <div class="card"><h3>Tizim sozlamalari</h3><div id="settingsInfo" style="font-size:0.85rem;color:var(--text2);"></div></div>
+        <div class="card">
+            <h3>Tizim sozlamalari</h3>
+            <div style="margin-bottom:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;margin-bottom:8px;">
+                    <span style="color:var(--text2);">Chegara (ishonchlilik)</span>
+                    <span id="thrLabel" style="font-weight:700;color:var(--text);">—</span>
+                </div>
+                <input type="range" id="thrSlider" min="0" max="1" step="0.05" value="0.7" style="width:100%;accent-color:var(--accent);">
+                <button class="btn btn-primary" style="margin-top:10px;" onclick="saveThreshold()">Chegarani saqlash</button>
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;margin-bottom:10px;">
+                    <span style="color:var(--text2);">Allalar</span>
+                    <span id="lullabiesCount" style="font-weight:700;color:var(--text);">—</span>
+                </div>
+                <div id="lullabiesList" style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;"></div>
+                <input type="file" id="lullabyFile" accept=".mp3,.wav,.ogg,.m4a" style="display:none;" onchange="uploadLullaby()">
+                <button class="btn btn-outline" onclick="document.getElementById('lullabyFile').click()">Yangi alla yuklash</button>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Model samaradorligi</h3>
+            <div id="modelInfo"></div>
+            <div style="margin-top:14px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>Test aniqligi</span><span id="trainAcc">—</span></div>
+                <div class="accuracy-bar"><div class="accuracy-fill" id="trainAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
+            </div>
+            <div style="margin-top:10px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;"><span>O'rtacha bashorat vaqti</span><span id="valAcc">—</span></div>
+                <div class="accuracy-bar"><div class="accuracy-fill" id="valAccBar" style="width:0%;background:linear-gradient(90deg,var(--accent3),var(--accent4));"></div></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -324,7 +344,7 @@ async function loadStats(){
     if(charts.dist)charts.dist.destroy();
     charts.dist=new Chart(document.getElementById('distributionChart'),{
         type:'doughnut',data:{labels:dL,datasets:[{data:dD,backgroundColor:data.distribution.map(d=>COLORS[d.cry_type]||'#636e72'),borderWidth:0}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#b2bec3',padding:14,font:{size:12}}}}}
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#636e72',padding:14,font:{size:12}}}}}
     });
 
     const hrs=Array.from({length:24},(_,i)=>String(i).padStart(2,'0'));
@@ -332,7 +352,7 @@ async function loadStats(){
     if(charts.hourly)charts.hourly.destroy();
     charts.hourly=new Chart(document.getElementById('hourlyChart'),{
         type:'bar',data:{labels:hrs,datasets:[{data:hrs.map(h=>hMap[h]||0),backgroundColor:'rgba(108,92,231,0.5)',borderColor:'#6c5ce7',borderWidth:1,borderRadius:4}]},
-        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#b2bec3',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{display:false}}}
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#636e72',font:{size:10}},grid:{color:'rgba(16,24,40,0.06)'}},y:{ticks:{color:'#636e72'},grid:{color:'rgba(16,24,40,0.06)'},beginAtZero:true}},plugins:{legend:{display:false}}}
     });
 }
 
@@ -343,7 +363,7 @@ async function loadAnalytics(){
     if(charts.daily)charts.daily.destroy();
     charts.daily=new Chart(document.getElementById('dailyChart'),{
         type:'line',data:{labels:data.daily.map(d=>d.day),datasets:[{data:data.daily.map(d=>d.count),borderColor:'#00cec9',backgroundColor:'rgba(0,206,201,0.1)',fill:true,tension:0.4,pointRadius:3}]},
-        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#b2bec3',maxTicksLimit:8},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{display:false}}}
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#636e72',maxTicksLimit:8},grid:{color:'rgba(16,24,40,0.06)'}},y:{ticks:{color:'#636e72'},grid:{color:'rgba(16,24,40,0.06)'},beginAtZero:true}},plugins:{legend:{display:false}}}
     });
 
     const days=[...new Set(data.daily_by_type.map(d=>d.day))].sort(),types=[...new Set(data.daily_by_type.map(d=>d.cry_type))];
@@ -351,7 +371,7 @@ async function loadAnalytics(){
     if(charts.dailyType)charts.dailyType.destroy();
     charts.dailyType=new Chart(document.getElementById('dailyTypeChart'),{
         type:'bar',data:{labels:days,datasets:ds},
-        options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'}},y:{stacked:true,ticks:{color:'#b2bec3'},grid:{color:'rgba(255,255,255,0.04)'},beginAtZero:true}},plugins:{legend:{labels:{color:'#b2bec3'}}}}
+        options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,ticks:{color:'#636e72'},grid:{color:'rgba(16,24,40,0.06)'}},y:{stacked:true,ticks:{color:'#636e72'},grid:{color:'rgba(16,24,40,0.06)'},beginAtZero:true}},plugins:{legend:{labels:{color:'#636e72'}}}}
     });
 }
 
@@ -392,7 +412,50 @@ async function loadModelInfo(){
 }
 async function loadSettings(){
     const s=await api('/api/settings');
-    document.getElementById('settingsInfo').innerHTML=`<div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;"><div>Namuna tezligi: <strong>${s.sample_rate} Hz</strong></div><div>Davomiylik: <strong>${s.duration}s</strong></div><div>Kanallar: <strong>${s.channels}</strong></div><div>Chegara: <strong>${s.threshold}</strong></div><div>Telegram: <strong>${s.telegram_configured?'Sozlangan':'Sozlanmagan'}</strong></div><div>Allalar: <strong>${s.lullabies_count} ta fayl</strong></div></div>`;
+    const slider=document.getElementById('thrSlider'),label=document.getElementById('thrLabel');
+    slider.value=s.threshold;
+    label.textContent=parseFloat(s.threshold).toFixed(2);
+    slider.oninput=e=>label.textContent=parseFloat(e.target.value).toFixed(2);
+    document.getElementById('lullabiesCount').textContent=s.lullabies_count+' ta';
+    loadLullabies();
+}
+
+async function loadLullabies(){
+    const r=await api('/api/lullabies');
+    const box=document.getElementById('lullabiesList');
+    if(!r.files.length){box.innerHTML='<div style="color:var(--text2);font-size:0.8rem;padding:6px 0;">Alla topilmadi</div>';return}
+    box.innerHTML=r.files.map(f=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:0.8rem;">
+            <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;">${f.name}</span>
+            <span style="color:var(--text2);margin-right:8px;font-size:0.72rem;">${f.size_mb} MB</span>
+            <button class="btn btn-danger" style="width:auto;padding:4px 10px;font-size:0.7rem;" data-lname="${f.name}" onclick="deleteLullaby(this.dataset.lname)">O'chirish</button>
+        </div>`).join('');
+}
+
+async function saveThreshold(){
+    const t=parseFloat(document.getElementById('thrSlider').value);
+    toast('Saqlanmoqda...');
+    const r=await fetch('/api/settings/threshold',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({threshold:t})}).then(r=>r.json());
+    toast(r.status==='ok'?'Chegara saqlandi: '+r.threshold:'Xato: '+r.message);
+}
+
+async function uploadLullaby(){
+    const inp=document.getElementById('lullabyFile');
+    if(!inp.files.length)return;
+    const fd=new FormData();
+    fd.append('file',inp.files[0]);
+    toast('Yuklanmoqda...');
+    const r=await fetch('/api/lullabies/upload',{method:'POST',body:fd}).then(r=>r.json());
+    inp.value='';
+    if(r.status==='ok'){toast('Yuklandi: '+r.name);loadSettings()}
+    else toast('Xato: '+r.message);
+}
+
+async function deleteLullaby(name){
+    if(!confirm(name+" o'chirilsinmi?"))return;
+    const r=await fetch('/api/lullabies/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})}).then(r=>r.json());
+    if(r.status==='ok'){toast("O'chirildi");loadSettings()}
+    else toast('Xato: '+r.message);
 }
 
 // ── Controls ─────────────────────────────────────────────────────────────
@@ -419,7 +482,7 @@ chartsInit.overview=true;
 loadStats();
 loadLastDetection();
 
-if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.ready();tg.expand();if(tg.themeParams){const tp=tg.themeParams;document.documentElement.style.setProperty('--bg',tp.bg_color||'#0f1117');document.documentElement.style.setProperty('--card',tp.secondary_bg_color||'#1a1d27');document.documentElement.style.setProperty('--text',tp.text_color||'#dfe6e9');document.documentElement.style.setProperty('--text2',tp.hint_color||'#b2bec3')}tg.BackButton.show();tg.BackButton.onClick(()=>tg.close())}
+if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.ready();tg.expand();if(tg.themeParams){const tp=tg.themeParams;document.documentElement.style.setProperty('--bg',tp.bg_color||'#f7f9fc');document.documentElement.style.setProperty('--card',tp.secondary_bg_color||'#fcfdfe');document.documentElement.style.setProperty('--text',tp.text_color||'#2d3436');document.documentElement.style.setProperty('--text2',tp.hint_color||'#636e72')}tg.BackButton.show();tg.BackButton.onClick(()=>tg.close())}
 </script>
 
 

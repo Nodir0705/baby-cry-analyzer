@@ -4,10 +4,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask, render_template, jsonify, request
 import sqlite3
+import re
+import subprocess
 from datetime import datetime, timedelta
+from werkzeug.utils import secure_filename
 from config import settings
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+
+ALLOWED_AUDIO_EXT = ('.mp3', '.wav', '.ogg', '.m4a')
 
 
 def get_db():
@@ -266,9 +272,93 @@ def api_get_settings():
         "telegram_configured": bool(settings.TELEGRAM_TOKEN and settings.CHAT_ID),
         "lullabies_count": len([
             f for f in os.listdir(settings.LULLABIES_DIR)
-            if f.endswith((".mp3", ".wav"))
+            if f.lower().endswith(ALLOWED_AUDIO_EXT)
         ]) if os.path.isdir(settings.LULLABIES_DIR) else 0,
     })
+
+
+@app.route("/api/settings/threshold", methods=["POST"])
+def api_set_threshold():
+    try:
+        data = request.get_json(force=True) or {}
+        t = float(data.get("threshold"))
+        if not 0.0 <= t <= 1.0:
+            return jsonify({"status": "error", "message": "threshold must be between 0.0 and 1.0"}), 400
+        cfg_path = os.path.join(settings.BASE_DIR, "config", "settings.py")
+        with open(cfg_path, "r") as f:
+            src = f.read()
+        new_src, n = re.subn(r"^(THRESHOLD\s*=\s*).*$",
+                             lambda m: m.group(1) + str(t),
+                             src, count=1, flags=re.MULTILINE)
+        if n == 0:
+            return jsonify({"status": "error", "message": "THRESHOLD line not found in config"}), 500
+        with open(cfg_path, "w") as f:
+            f.write(new_src)
+        settings.THRESHOLD = t
+        try:
+            subprocess.run(["sudo", "-n", "systemctl", "restart", "baby-cry.service"],
+                           timeout=15, check=False,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+        return jsonify({"status": "ok", "threshold": t})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+@app.route("/api/lullabies", methods=["GET"])
+def api_lullabies_list():
+    d = settings.LULLABIES_DIR
+    if not os.path.isdir(d):
+        return jsonify({"files": []})
+    files = []
+    for f in sorted(os.listdir(d)):
+        if not f.lower().endswith(ALLOWED_AUDIO_EXT):
+            continue
+        p = os.path.join(d, f)
+        try:
+            size = os.path.getsize(p)
+        except OSError:
+            size = 0
+        files.append({"name": f, "size_mb": round(size / 1024 / 1024, 2)})
+    return jsonify({"files": files})
+
+
+@app.route("/api/lullabies/upload", methods=["POST"])
+def api_lullabies_upload():
+    try:
+        if "file" not in request.files:
+            return jsonify({"status": "error", "message": "no file uploaded"}), 400
+        up = request.files["file"]
+        if not up.filename:
+            return jsonify({"status": "error", "message": "empty filename"}), 400
+        name = secure_filename(up.filename)
+        ext = os.path.splitext(name)[1].lower()
+        if ext not in ALLOWED_AUDIO_EXT:
+            return jsonify({"status": "error",
+                            "message": "allowed: " + ", ".join(ALLOWED_AUDIO_EXT)}), 400
+        os.makedirs(settings.LULLABIES_DIR, exist_ok=True)
+        dest = os.path.join(settings.LULLABIES_DIR, name)
+        up.save(dest)
+        return jsonify({"status": "ok", "name": name})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+@app.route("/api/lullabies/delete", methods=["POST"])
+def api_lullabies_delete():
+    try:
+        data = request.get_json(force=True) or {}
+        name = secure_filename(str(data.get("name", "")))
+        if not name:
+            return jsonify({"status": "error", "message": "no name"}), 400
+        path = os.path.join(settings.LULLABIES_DIR, name)
+        if not os.path.isfile(path):
+            return jsonify({"status": "error", "message": "not found"}), 404
+        os.remove(path)
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 
 @app.route("/api/simulate", methods=["POST"])
@@ -414,4 +504,42 @@ def api_lullaby_stop():
 if __name__ == "__main__":
     from storage.event_store import init_db
     init_db()
+
+    def _startup_notify():
+        import requests, time as _t, os as _o
+        # Skip if Flask reloader child process (prevents double notification)
+        if _o.environ.get("WERKZEUG_RUN_MAIN") == "true":
+            return
+        # Skip if notified recently (prevents crash-loop spam)
+        _flag = _o.path.join(settings.BASE_DIR, "storage", ".last_startup_notify")
+        try:
+            if _o.path.exists(_flag):
+                age = _t.time() - _o.path.getmtime(_flag)
+                if age < 60:  # cooldown: 60 seconds
+                    return
+            open(_flag, "w").write(str(_t.time()))
+        except Exception:
+            pass
+        _t.sleep(3)
+        try:
+            _active = "3cls"
+            try:
+                import os as _o
+                _active = open(_o.path.join(settings.BASE_DIR,"storage","active_model.txt")).read().strip()
+            except Exception:
+                pass
+            _url = f"https://{settings.NGROK_DOMAIN}" if getattr(settings,"NGROK_DOMAIN","") else "http://raspberrypi.local:5555"
+            _msg = f"\u2705 *Baby Cry Analyzer \u2014 Online*\n\n\U0001f4f1 Dashboard: {_url}\n\U0001f916 Model: *{_active}*\n\U0001f9ec ChatterBaby RF: *faol*\n\u23f0 Tizim ishga tushdi"
+            _base = f"https://api.telegram.org/bot{settings.DASHBOARD_BOT_TOKEN}"
+            for _cid in (getattr(settings,"CHAT_IDS",None) or [settings.CHAT_ID]):
+                try:
+                    requests.post(f"{_base}/sendMessage", json={"chat_id":_cid,"text":_msg,"parse_mode":"Markdown"}, timeout=10)
+                except Exception:
+                    pass
+            print("[startup] notified", flush=True)
+        except Exception as _e:
+            print(f"[startup] failed: {_e}", flush=True)
+
+    import threading as _th
+    _th.Thread(target=_startup_notify, daemon=True).start()
     app.run(host="0.0.0.0", port=5555, debug=True)
